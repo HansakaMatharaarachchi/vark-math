@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4b869e22a0feb13b5825ba8de1014f, type: 3}
+  m_Name: 1-Achilles
+  m_EditorClassIdentifier: 
+  id: S_1
+  name: Achilles
+  type: 1
+  price: 50
+  prefab: {fileID: 3637333152396548060, guid: afa6308ea0032d7e8ad2a59f840c0c06, type: 3}
+  levelToBeUnlocked: 1

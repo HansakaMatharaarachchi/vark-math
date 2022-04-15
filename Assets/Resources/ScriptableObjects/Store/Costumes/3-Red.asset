@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92346231a7df5a70b80c4a89ffa01ae, type: 3}
+  m_Name: 3-Red
+  m_EditorClassIdentifier: 
+  id: C_3
+  name: Red
+  type: 0
+  price: 75
+  prefab: {fileID: 1403093385490934530, guid: 479567aa0c6bc77179c82fbcf09d9b84, type: 3}
+  levelToBeUnlocked: 3
+  lobbyPrefab: {fileID: 2336884802499062969, guid: 533ff12d142eeb130a6b0abbf5459d29,
+    type: 3}

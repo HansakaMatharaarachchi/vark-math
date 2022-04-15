@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd524f227e3b4438b2b6c4115af7cb7, type: 3}
+  m_Name: 3-Sabre
+  m_EditorClassIdentifier: 
+  id: E_3
+  name: Sabre
+  type: 2
+  price: 50
+  prefab: {fileID: 8912984668890104594, guid: 97470677ad072d22f8fd22c71f2efb31, type: 3}
+  levelToBeUnlocked: 3

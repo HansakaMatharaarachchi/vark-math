@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "852527978676",
+    "firebase_url": "https://vark-math-f98aa-default-rtdb.firebaseio.com",
+    "project_id": "vark-math-f98aa",
+    "storage_bucket": "vark-math-f98aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852527978676:android:9aad6e63bb591bd960dfe1",
+        "android_client_info": {
+          "package_name": "com.sdgp57.varkmath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852527978676-43icl4f03e5vlles5eq14thjmed62pmk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArMqMvW39aZfj422GbGzpJDXDNov1L8vI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852527978676-43icl4f03e5vlles5eq14thjmed62pmk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

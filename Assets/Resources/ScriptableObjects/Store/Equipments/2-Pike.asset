@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd524f227e3b4438b2b6c4115af7cb7, type: 3}
+  m_Name: 2-Pike
+  m_EditorClassIdentifier: 
+  id: E_2
+  name: Pike
+  type: 2
+  price: 20
+  prefab: {fileID: 9029272772124058902, guid: 799f50bffc4c361b3934863ea088c4be, type: 3}
+  levelToBeUnlocked: 2
