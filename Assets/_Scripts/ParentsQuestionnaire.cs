@@ -33,24 +33,28 @@ public class ParentsQuestionnaire : MonoBehaviour
 
     private void ChangeQuestion(int index)
     {
-        DisplayQuestionsAndAnswers(index);
-        switch (choices.GetFirstActiveToggle().name)
+        Debug.Log(index);
+        if (index < 10)
         {
-            case "Visual":
-                ++visual;
-                break;
-            case "Auditory":
-                ++auditory;
-                break;
+            DisplayQuestionsAndAnswers(index);
+            switch (choices.GetFirstActiveToggle().name)
+            {
+                case "Visual":
+                    ++visual;
+                    break;
+                case "Auditory":
+                    ++auditory;
+                    break;
 
-            case "Kinesthetic":
-                ++kinesthetic;
-                break;
+                case "Kinesthetic":
+                    ++kinesthetic;
+                    break;
+            }
+
+            Debug.Log(visual + " " + auditory + " " + kinesthetic);
+            choices.SetAllTogglesOff();
+            ++selectedIndex;
         }
-
-        Debug.Log(visual + " " + auditory + " " + kinesthetic);
-        choices.SetAllTogglesOff();
-        ++selectedIndex;
     }
 
     private void DisplayQuestionsAndAnswers(int index)

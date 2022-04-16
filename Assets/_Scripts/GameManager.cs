@@ -249,9 +249,8 @@ namespace _Scripts
             {
                 //means that player has successfully passed the level
                 Debug.Log("U HAVE COMPLETED THE LEVeEL");
-                
-                currentLevelProgress = null;
-                currentLevelQuestions = null;
+                // currentLevelProgress = null;
+                // currentLevelQuestions = null;
                 return;
             }
             currentQuestionIndex++;

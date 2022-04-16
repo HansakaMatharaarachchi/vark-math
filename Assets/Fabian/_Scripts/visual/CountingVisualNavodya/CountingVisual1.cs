@@ -5,10 +5,10 @@ using UnityEngine;
 using _Scripts;
 using UnityEngine;
 using UnityEngine.UI;
-public class CountingVisual1 : MonoBehaviour
+public class CountingVisual1 : Question
 {
     
-    public Text evaluate;
+    // public Text evaluate;
     public Button[] answerBtnArr;
 
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class CountingVisual1 : MonoBehaviour
     }
     public void CheckAnswerCorrect()
     {
-        evaluate.text = "wrong answer, Try again!!";
+        // evaluate.text = "wrong answer, Try again!!";
 
         //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddWrongAnswer();
        
@@ -50,7 +50,7 @@ public class CountingVisual1 : MonoBehaviour
     }
     public void CheckAnswerRight()
     {
-        evaluate.text = "correct answer, You won!!";
+        // evaluate.text = "correct answer, You won!!";
         //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddCorrectAnswer();
         //GameManager.Instance.PlayNextQuestion();
     }
