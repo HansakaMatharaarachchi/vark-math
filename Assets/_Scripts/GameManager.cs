@@ -17,8 +17,7 @@ namespace _Scripts
         public LevelManager levelManager;
         private FirebaseManager firebaseManager;
         public bool isSignedIn;
-        
-        
+
         public int currentLevel;
         public LevelProgress currentLevelProgress;
         public int[] currentLevelQuestions;
@@ -233,7 +232,7 @@ namespace _Scripts
             currentLevelQuestions = levelManager.GetQuestionsForALevel(level, player.learningStyle);
             // loads the fist question in the level
             currentQuestionIndex = 0;
-            LoadScene(currentLevelQuestions[currentQuestionIndex]);
+            PlayQuestion(0);
         }
 
         public void PlayQuestion(int index)
@@ -247,9 +246,6 @@ namespace _Scripts
             {
                 //means that player has successfully passed the level
                 Debug.Log("U HAVE COMPLETED THE LEVeEL");
-                // currentLevelProgress = null;
-                // currentLevelQuestions = null;
-                return;
             }
         }
 
