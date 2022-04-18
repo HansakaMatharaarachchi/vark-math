@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 6448862710a9a2b558a3b26b16b85915
+guid: 7121fb53522f34595a812c810bed9eb2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - hUD: {instanceID: 0}
-  - resultPanel: {instanceID: 0}
-  - questionResultText: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
