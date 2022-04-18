@@ -45,14 +45,14 @@ public class Counting1Audio : MonoBehaviour
     {
         // GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddWrongAnswer();
         evaluate.text = "wrong answer";
-        GameManager.Instance.PlayNextQuestion();
+        // GameManager.Instance.PlayNextQuestion();
 
     }
     public void CheckAnswerRight()
     {
         evaluate.text = "correct answer";
         // GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddCorrectAnswer();
-        GameManager.Instance.PlayNextQuestion();
+        // GameManager.Instance.PlayNextQuestion();
     }
 }
 
