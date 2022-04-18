@@ -33,26 +33,11 @@ public class CountingVisual1 : Question
         //give random values for question and answers
 
 
-        answerBtnArr[0].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[1].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[2].onClick.AddListener(CheckAnswerRight);
-        answerBtnArr[3].onClick.AddListener(CheckAnswerCorrect);
+        answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[1].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[2].onClick.AddListener(SetAnswerCorrect);
+        answerBtnArr[3].onClick.AddListener(SetAnswerWrong);
 
-    }
-    public void CheckAnswerCorrect()
-    {
-        // evaluate.text = "wrong answer, Try again!!";
-
-        //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddWrongAnswer();
-       
-        //GameManager.Instance.PlayNextQuestion();
-
-    }
-    public void CheckAnswerRight()
-    {
-        // evaluate.text = "correct answer, You won!!";
-        //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddCorrectAnswer();
-        //GameManager.Instance.PlayNextQuestion();
     }
 
 }

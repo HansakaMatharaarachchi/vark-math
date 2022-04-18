@@ -231,19 +231,17 @@ namespace _Scripts
         {
             currentLevel = level;
             currentLevelQuestions = levelManager.GetQuestionsForALevel(level, player.learningStyle);
-            
             // loads the fist question in the level
             currentQuestionIndex = 0;
             LoadScene(currentLevelQuestions[currentQuestionIndex]);
-            
-            currentQuestionIndex++;
         }
 
-        public void PlayNextQuestion()
+        public void PlayQuestion(int index)
         {
-            if (currentQuestionIndex < currentLevelQuestions.Length)
+            if (index < currentLevelQuestions.Length)
             {
-                LoadScene(currentLevelQuestions[currentQuestionIndex]);
+                LoadScene(currentLevelQuestions[index]);
+                currentQuestionIndex = index;
             }
             else
             {
@@ -253,7 +251,6 @@ namespace _Scripts
                 // currentLevelQuestions = null;
                 return;
             }
-            currentQuestionIndex++;
         }
 
         public void CollectDailyReward()

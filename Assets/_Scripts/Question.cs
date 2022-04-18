@@ -6,42 +6,23 @@ using UnityEngine.SceneManagement;
 
 public abstract class Question : MonoBehaviour
 {
-
-    [Header("Question Base")]
-    [SerializeField] private GameObject resultPanel;
-    [SerializeField] private TMP_Text questionResultText;
-    private GameObject inGameUI;
+    [Header("Question Base")] [SerializeField]
+    private InGameUIManager inGameUIManager;
 
     private void Awake()
     {
-        inGameUI = GameObject.Find("InGameUI");
-        //enables the HUD
-        inGameUI.transform.GetChild(0).gameObject.SetActive(true);
+        inGameUIManager = GameObject.Find("InGameUI").GetComponent<InGameUIManager>();
     }
 
-    private void ShowResultPanel()
-    {
-        resultPanel.SetActive(true);
-    }
-    
     protected virtual void SetAnswerCorrect()
     {
-        // GameManager.Instance.currentLevelProgress.correctAnswersCount++;
-        questionResultText.text = "YAY!";
-        ShowResultPanel();
-        // GameManager.Instance.PlayNextQuestion();
-    }
-    
-    protected virtual void SetAnswerWrong()
-    {
-        // GameManager.Instance.currentLevelProgress.noOfWrongAnswers++;
-        questionResultText.text = "OOPS!";
-        ShowResultPanel();
+        inGameUIManager.IsQuestionCorrect(true);
+        GameManager.Instance.currentLevelProgress.correctAnswersCount++;
     }
 
-    protected virtual void RetryQuestion()
+    protected virtual void SetAnswerWrong()
     {
-        // reloads the current scene (Question)
-        // GameManager.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        inGameUIManager.IsQuestionCorrect(false);
+        GameManager.Instance.currentLevelProgress.noOfWrongAnswers++;
     }
 }
