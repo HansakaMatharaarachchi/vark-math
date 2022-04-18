@@ -10,11 +10,13 @@ public abstract class Question : MonoBehaviour
     [Header("Question Base")]
     [SerializeField] private GameObject resultPanel;
     [SerializeField] private TMP_Text questionResultText;
-    private GameObject hUD;
+    private GameObject inGameUI;
 
     private void Awake()
     {
-        hUD = GameObject.Find("HUD");
+        inGameUI = GameObject.Find("InGameUI");
+        //enables the HUD
+        inGameUI.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     private void ShowResultPanel()
