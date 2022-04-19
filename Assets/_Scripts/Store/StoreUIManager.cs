@@ -77,7 +77,7 @@ public class StoreUIManager : MonoBehaviour
         itemName.text = itemObject.name;
 
         //checks if the player has the required level to purchase the item 
-        if (itemObject.levelToBeUnlocked <= GameManager.Instance.player.levels.Count + 1)
+        if (itemObject.levelToBeUnlocked <= GameManager.Instance.player.level)
         {
             //checks if the player already has the item
             if (GameManager.Instance.player.inventory.IsItemOwned(itemObject))

@@ -28,7 +28,7 @@ public class LobbyManager : MonoBehaviour
             rewardAvailableImage.enabled = true;
         }
         userName.text = GameManager.Instance.player.Name;
-        userLevel.text = (GameManager.Instance.player.levels.Count + 1).ToString(); //todo check if its correct
+        userLevel.text = (GameManager.Instance.player.level).ToString();
         DisplayEquippedItems();
     }
 
@@ -76,7 +76,7 @@ public class LobbyManager : MonoBehaviour
 
     public void DisplayLevelSelection()
     {
-        for (int i = 0; i < GameManager.Instance.player.levels.Count + 1; i++)
+        for (int i = 0; i < GameManager.Instance.player.level; i++)
         {
             levelChoices[i].interactable = true;
             levelChoices[i].transform.GetChild(1).GetComponentInChildren<Image>().enabled = false;

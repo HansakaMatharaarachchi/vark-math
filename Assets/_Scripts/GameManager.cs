@@ -17,8 +17,7 @@ namespace _Scripts
         public LevelManager levelManager;
         private FirebaseManager firebaseManager;
         public bool isSignedIn;
-        
-        
+
         public int currentLevel;
         public LevelProgress currentLevelProgress;
         public int[] currentLevelQuestions;
@@ -230,10 +229,11 @@ namespace _Scripts
         public void PlayLevel(int level)
         {
             currentLevel = level;
+            currentLevelProgress = new LevelProgress();
             currentLevelQuestions = levelManager.GetQuestionsForALevel(level, player.learningStyle);
             // loads the fist question in the level
             currentQuestionIndex = 0;
-            LoadScene(currentLevelQuestions[currentQuestionIndex]);
+            PlayQuestion(0);
         }
 
         public void PlayQuestion(int index)
@@ -247,9 +247,43 @@ namespace _Scripts
             {
                 //means that player has successfully passed the level
                 Debug.Log("U HAVE COMPLETED THE LEVeEL");
-                // currentLevelProgress = null;
-                // currentLevelQuestions = null;
-                return;
+            }
+        }
+
+        public void SaveLastAttemptInCurrentLvl(bool hasPassed)
+        {
+            // checks if the player has already played the level
+            if (player.levelStats[currentLevel] != null)
+            {
+                // checks if the player has already passed the current level
+                // means that the attempt is a retry after completing the level
+                if (player.levelStats[currentLevel].isPassed)
+                {
+                    player.levelStats[currentLevel].lastAttemptProgress = currentLevelProgress;
+                }
+                else
+                {
+                    if (hasPassed)
+                    {
+                        player.level++;
+                        player.levelStats[currentLevel].isPassed = true;
+                        player.levelStats[currentLevel].lastAttemptProgress = currentLevelProgress;
+                    }
+                    else
+                    {
+                        player.levelStats[currentLevel].isPassed = false;
+                        player.levelStats[currentLevel].lastAttemptProgress = currentLevelProgress;
+                    }
+                }
+            }
+            // save results of the first time level attempt
+            else
+            {
+                player.levelStats[currentLevel] = new Level(currentLevelProgress, hasPassed);
+                if (hasPassed)
+                {
+                    player.level++;
+                }
             }
         }
 

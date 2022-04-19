@@ -84,6 +84,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void PlayNextLvlOnClick()
     {
+        GameManager.Instance.SaveLastAttemptInCurrentLvl(true);
         GameManager.Instance.PlayLevel(GameManager.Instance.currentLevel + 1);
     }
 
