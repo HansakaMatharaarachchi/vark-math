@@ -16,14 +16,16 @@ namespace _Scripts
         public string Name { get; set; }
         public int Age { get; set; }
         public int GoldCoinAmount { get; set; } = 200;
-        public List<Level> levels = new List<Level>();
+        public int level = 1;
+        public Level[] levelStats = new Level[5];
         public Inventory inventory = new Inventory();
         public LearningStyle learningStyle;
         public DateTime lastActiveDate;
         public bool isDailyRewardCollected;
         public float lastActiveDatePlaytimeInSeconds;
 
-        public Player() {
+        public Player()
+        {
         }
 
         public Player(string name, int age)
