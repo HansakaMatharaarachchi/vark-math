@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net;
 using System.Threading.Tasks;
 using _Scripts.Firebase;
+using _Scripts.Utils;
 using Firebase.Auth;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,8 @@ namespace _Scripts
         public int[] currentLevelQuestions;
         public int currentQuestionIndex;
 
+        [SerializeField] private GameObject screenGuardWarningCanvas;
+
         protected override async void Awake()
         {
             base.Awake();
@@ -37,7 +40,7 @@ namespace _Scripts
                 }
                 else
                 {
-                    Debug.Log("Signed  oUT");
+                    Debug.Log("Signed Out");
                     AuthenticationUIManager.Instance.ShowStartPanel();
                 }
             }
@@ -47,6 +50,30 @@ namespace _Scripts
             }
         }
 
+        private async void InitGame()
+        {
+            store = new Store();
+            levelManager = new LevelManager();
+            player = await firebaseManager.RetrieveUserDataAsync();
+            if (player.learningStyle == 0)
+            {
+                player.learningStyle = FindLearningStyle();
+            }
+
+            // resets daily stats for a new day
+            if (DateTime.Compare(DateTime.Now.Date, player.lastActiveDate) > 0)
+            {
+                player.lastActiveDate = DateTime.Now.Date;
+                player.lastActiveDatePlaytimeInSeconds = 0.0f;
+                player.isDailyRewardCollected = false;
+            }
+
+            StartScreenAddictionShieldAsync(); //todo fix when max === now
+            await LoadSceneAsync(2);
+            // await MenuLoading(2);
+        }
+
+        
         //checks if the internet connectivity is available or not
         //https://stackoverflow.com/questions/2031824/what-is-the-best-way-to-check-for-internet-connectivity-using-net
         private static bool CheckForInternetConnection(int timeoutMs = 10000, string url = null)
@@ -76,28 +103,6 @@ namespace _Scripts
         }
 
 
-        private async void InitGame()
-        {
-            store = new Store();
-            levelManager = new LevelManager();
-            player = await firebaseManager.RetrieveUserDataAsync();
-            if (player.learningStyle == 0)
-            {
-                player.learningStyle = FindLearningStyle();
-            }
-
-            // resets daily stats for a new day
-            if (DateTime.Compare(DateTime.Now.Date, player.lastActiveDate) > 0)
-            {
-                player.lastActiveDate = DateTime.Now.Date;
-                player.lastActiveDatePlaytimeInSeconds = 0.0f;
-                player.isDailyRewardCollected = false;
-            }
-
-            await LoadSceneAsync(2);
-            // await MenuLoading(2);
-            StartScreenAddictionShieldAsync();
-        }
 
         public async Task<string> SignInUser(string email, string password)
         {
@@ -178,13 +183,13 @@ namespace _Scripts
         }
 
 
-        public LearningStyle FindLearningStyle()
+        private LearningStyle FindLearningStyle()
         {
             return LearningStyle.Visual;
             //Todo find learning style logic should be here 
         }
 
-        public async void StartScreenAddictionShieldAsync()
+        private async void StartScreenAddictionShieldAsync()
         {
             while (player.lastActiveDatePlaytimeInSeconds <= 3600)
             {
@@ -192,8 +197,14 @@ namespace _Scripts
                 player.lastActiveDatePlaytimeInSeconds++;
             }
 
-            Debug.Log("Time REACHED"); //todo add a block panel
-            Application.Quit();
+            Debug.Log("Daily Time REACHED");
+            Instantiate(screenGuardWarningCanvas);
+            await Task.Delay(3000);
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                     Application.Quit();
+#endif
         }
 
         public void LoadScene(int index)

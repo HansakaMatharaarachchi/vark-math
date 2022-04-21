@@ -7,27 +7,31 @@ namespace _Scripts
         public int noOfAttempts;
         public LevelProgress lastAttemptProgress;
 
+        public Level()
+        {
+        }
+
         public Level(LevelProgress progress)
         {
             noOfAttempts = 1;
             lastAttemptProgress = progress;
         }
-        
+
         public Level(LevelProgress progress, bool isPassed)
         {
             noOfAttempts = 1;
             lastAttemptProgress = progress;
             this.isPassed = isPassed;
         }
-        
     }
+
     [System.Serializable]
     public class LevelProgress
     {
         public int correctAnswersCount;
         public int noOfQuestions = 3;
         public int noOfWrongAnswers;
-    
+
         // public int noOfAttempts;
         // public int correctAnswers;
 

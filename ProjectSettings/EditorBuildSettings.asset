@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Fabian/Scenes/BG/spaceT1 1.unity
     guid: 1c4d5ac654dd272e28c3368f67e95c97
+  - enabled: 1
+    path: Assets/_Scenes/ScreenGuardWarningInfo.unity
+    guid: 18157937671b7df0db785d2f7f943bd6
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f0356e91825cde408ce0c67276aec5e,
       type: 2}
