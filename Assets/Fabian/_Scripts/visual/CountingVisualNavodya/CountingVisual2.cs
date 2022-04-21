@@ -5,7 +5,7 @@ using UnityEngine;
 using _Scripts;
 using UnityEngine;
 using UnityEngine.UI;
-public class CountingVisual3 : Question
+public class CountingVisual2 : Question
 {
 
     // public Text evaluate;
@@ -20,10 +20,10 @@ public class CountingVisual3 : Question
 
     public void RandQuest()
     {
-        int value1 = 7;
-        int value2 = 8;
-        int value3 = 9;
-        int value4 = 10;
+        int value1 = 4;
+        int value2 = 5;
+        int value3 = 6;
+        int value4 = 7;
 
 
         answerBtnArr[0].GetComponentInChildren<Text>().text = value1.ToString();
@@ -35,10 +35,10 @@ public class CountingVisual3 : Question
         //give random values for question and answers
 
 
-        answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[0].onClick.AddListener(SetAnswerCorrect);
         answerBtnArr[1].onClick.AddListener(SetAnswerWrong);
         answerBtnArr[2].onClick.AddListener(SetAnswerWrong);
-        answerBtnArr[3].onClick.AddListener(SetAnswerCorrect);
+        answerBtnArr[3].onClick.AddListener(SetAnswerWrong);
 
     }
 
