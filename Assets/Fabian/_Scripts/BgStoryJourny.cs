@@ -1,26 +1,35 @@
-using System;
 using _Scripts;
-using _Scripts.Firebase;
-using Firebase.Auth;
-using Newtonsoft.Json;
-using TMPro;
 using UnityEngine;
 
 public class BgStoryJourny : MonoBehaviour
 {
     [SerializeField] private Transform playerContainer;
     [SerializeField] private Transform spaceShipContainer;
+    
+    [SerializeField] private GameObject destinationPlanet;
+    [SerializeField] private Material[] destinationPlanetMats;
 
     private void Awake()
     {
-        // DisplayEquippedItems();
+        DisplayEquippedItems();
+        ChangeDestinationPlanet();
     }
-
     private void DisplayEquippedItems()
     {
-        if (playerContainer.childCount > 0)
-            Destroy(playerContainer.GetChild(0).gameObject);
+        // displays the equipped spaceShip
+        if (spaceShipContainer.childCount > 0)
+            Destroy(spaceShipContainer.GetChild(0).gameObject);
         GameObject spaceShip = ((SpaceShipObject)GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedSpaceShipId())).journeyPrefab;
         Instantiate(spaceShip, spaceShipContainer);
+        
+        // displays the equipped costume
+        if (playerContainer.childCount > 0)
+            Destroy(playerContainer.GetChild(0).gameObject);
+        GameObject character = ((CostumeObject)GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedCostumeId())).journeyPrefab;
+        Instantiate(character, playerContainer);
+    }
+    
+    private void ChangeDestinationPlanet()
+    {
     }
 }
