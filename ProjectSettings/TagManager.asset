@@ -8,6 +8,8 @@ TagManager:
   - E_1
   - E_2
   - E_3
+  - HUD
+  - Canvas
   layers:
   - Default
   - TransparentFX
