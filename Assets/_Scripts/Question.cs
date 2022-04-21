@@ -16,13 +16,21 @@ public abstract class Question : MonoBehaviour
 
     protected virtual void SetAnswerCorrect()
     {
+        GameManager.Instance.currentLevelProgress.noOfCorrectAnswers ++;
+        if (GameManager.Instance.currentLevelProgress.noOfCorrectAnswers == GameManager.Instance.currentLevelQuestions.Length)
+        {
+            GameManager.Instance.SaveLastAttemptInCurrentLvl(true);
+        }
         inGameUIManager.IsQuestionCorrect(true);
-        GameManager.Instance.currentLevelProgress.correctAnswersCount++;
     }
 
     protected virtual void SetAnswerWrong()
     {
-        inGameUIManager.IsQuestionCorrect(false);
         GameManager.Instance.currentLevelProgress.noOfWrongAnswers++;
+        if (GameManager.Instance.currentLevelProgress.noOfWrongAnswers == GameManager.Instance.currentLevelQuestions.Length)
+        {
+            GameManager.Instance.SaveLastAttemptInCurrentLvl(false);
+        }
+        inGameUIManager.IsQuestionCorrect(false);
     }
 }
