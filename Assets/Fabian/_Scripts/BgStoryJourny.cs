@@ -6,23 +6,21 @@ using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 
-public class Bg : MonoBehaviour
+public class BgStoryJourny : MonoBehaviour
 {
-    [Header("Player Profile details")]
     [SerializeField] private Transform playerContainer;
-
-    
+    [SerializeField] private Transform spaceShipContainer;
 
     private void Awake()
     {
-        DisplayEquippedItems();
+        // DisplayEquippedItems();
     }
 
     private void DisplayEquippedItems()
     {
         if (playerContainer.childCount > 0)
             Destroy(playerContainer.GetChild(0).gameObject);
-        // var character = ((CostumeObject)GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedCostumeId())).bgPrefab;
-        // Instantiate(character, playerContainer.position, playerContainer.rotation, playerContainer);
+        GameObject spaceShip = ((SpaceShipObject)GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedSpaceShipId())).journeyPrefab;
+        Instantiate(spaceShip, spaceShipContainer);
     }
 }
