@@ -10,6 +10,7 @@ public class CountingVisual1 : Question
     
     // public Text evaluate;
     public Button[] answerBtnArr;
+    //public int current;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +20,11 @@ public class CountingVisual1 : Question
 
     public void RandQuest()
     {
-        int value1 = 7;
-        int value2 = 4;
-        int value3 = 2;
-        int value4 = 8;
+        int value1 = 1;
+        int value2 = 2;
+        int value3 = 3;
+        int value4 = 4;
+
 
         answerBtnArr[0].GetComponentInChildren<Text>().text = value1.ToString();
 
@@ -34,8 +36,8 @@ public class CountingVisual1 : Question
 
 
         answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
-        answerBtnArr[1].onClick.AddListener(SetAnswerWrong);
-        answerBtnArr[2].onClick.AddListener(SetAnswerCorrect);
+        answerBtnArr[1].onClick.AddListener(SetAnswerCorrect);
+        answerBtnArr[2].onClick.AddListener(SetAnswerWrong);
         answerBtnArr[3].onClick.AddListener(SetAnswerWrong);
 
     }
