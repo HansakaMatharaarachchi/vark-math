@@ -242,9 +242,9 @@ namespace _Scripts
             currentLevel = level;
             currentLevelQuestions = levelManager.GetQuestionsForALevel(level, player.learningStyle);
             currentLevelProgress = new LevelProgress(currentLevelQuestions.Length);
-            // loads the fist question in the level
             currentQuestionIndex = 0;
-            PlayQuestion(0);
+            // loads the BG story - adventure
+            LoadScene(13);
         }
 
         public void PlayQuestion(int index)

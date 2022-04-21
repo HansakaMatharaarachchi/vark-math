@@ -7,6 +7,7 @@ public class BgStoryLoadOnActivation : MonoBehaviour
 {
     void OnEnable()
     {
-        GameManager.Instance.LoadScene(3);
+        //loads the first question of the current level
+        GameManager.Instance.PlayQuestion(GameManager.Instance.currentQuestionIndex);
     }
 }
