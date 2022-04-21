@@ -10,8 +10,9 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] private TMP_Text userLevel;
     [SerializeField] private TMP_Text userName;
     [SerializeField] private TMP_Text goldCoinAmount;
-    [SerializeField] private TMP_Text soilSampleAmount;
+    [SerializeField] private TMP_Text soilSampleAmount; // todo remove
     [SerializeField] private Transform playerContainer;
+    [SerializeField] private Transform spaceShipContainer;
     [SerializeField] private Button[] levelChoices;
     
     [SerializeField] private Transform rewardCollectedStatus;
@@ -34,9 +35,23 @@ public class LobbyManager : MonoBehaviour
 
     private void DisplayEquippedItems()
     {
+        DisplaySpaceShip();
+        DisplayCharacter();
+    }
+
+    private void DisplaySpaceShip()
+    {
+        if (spaceShipContainer.childCount > 0)
+            Destroy(playerContainer.GetChild(0).gameObject);
+        GameObject spaceShip = ((SpaceShipObject) GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedSpaceShipId())).lobbyPrefab;
+        Instantiate(spaceShip, spaceShipContainer);
+    }
+
+    private void DisplayCharacter()
+    {
         if (playerContainer.childCount > 0)
             Destroy(playerContainer.GetChild(0).gameObject);
-        var character = ((CostumeObject) GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedCostumeId())).lobbyPrefab;
+        GameObject character = ((CostumeObject) GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedCostumeId())).lobbyPrefab;
         Instantiate(character, playerContainer.position, playerContainer.rotation, playerContainer);
     }
 

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoreUIManager : MonoBehaviour
+public class StoreManager : MonoBehaviour
 {
     [SerializeField] private Button backButton;
     [SerializeField] private Button previousButton;
