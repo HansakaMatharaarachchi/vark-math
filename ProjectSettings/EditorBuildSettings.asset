@@ -27,11 +27,26 @@ EditorBuildSettings:
     path: Assets/Fabian/Scenes/Level-1/Visual/third_scean.unity
     guid: 23dcc94ed0f82d2b994ccfe118b9cf16
   - enabled: 1
+    path: Assets/Fabian/Scenes/Level-2/Addition_1.unity
+    guid: c14eb2b87376b534cb6d4700cb9bb794
+  - enabled: 1
+    path: Assets/Fabian/Scenes/Level-2/Addition_2.unity
+    guid: ed4f5f8b1ab67e246b614e2d2cc8afd8
+  - enabled: 1
+    path: Assets/Fabian/Scenes/Level-2/Addition_3.unity
+    guid: b46e5251796ce77439b6d23e379ee1a8
+  - enabled: 1
+    path: Assets/Fabian/Scenes/Level-3/SubtractionVisual1.unity
+    guid: dacf8d25cffc39c41916f9c58eab1679
+  - enabled: 1
+    path: Assets/Fabian/Scenes/Level-3/SubtractionVisual2.unity
+    guid: de7ddbc98ea4ed74cb5fdf402df1cb48
+  - enabled: 1
+    path: Assets/Fabian/Scenes/Level-3/SubtractionVisual3.unity
+    guid: 48d164f893fb6d040bf5395497f7c395
+  - enabled: 1
     path: Assets/Fabian/Scenes/BG/spaceT1 1.unity
     guid: 1c4d5ac654dd272e28c3368f67e95c97
-  - enabled: 1
-    path: Assets/_Scenes/ScreenGuardWarningInfo.unity
-    guid: 18157937671b7df0db785d2f7f943bd6
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f0356e91825cde408ce0c67276aec5e,
       type: 2}
