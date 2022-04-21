@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18033695, g: 0.22577956, b: 0.3069536, a: 1}
+  m_IndirectSpecularColor: {r: 0.18033743, g: 0.22578035, b: 0.30695525, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7573,13 +7573,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090178678feebd942ab6438e3bb9555f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultPanel: {fileID: 0}
-  questionResultText: {fileID: 0}
+  inGameUIManager: {fileID: 0}
   answerBtnArr:
   - {fileID: 519278134}
   - {fileID: 421655597}
   - {fileID: 965828647}
   - {fileID: 58616933}
+  current: 0
 --- !u!4 &1998254973
 Transform:
   m_ObjectHideFlags: 0
