@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net;
 using System.Threading.Tasks;
 using _Scripts.Firebase;
+using _Scripts.Utils;
 using Firebase.Auth;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,7 +40,7 @@ namespace _Scripts
                 }
                 else
                 {
-                    Debug.Log("Signed oUT");
+                    Debug.Log("Signed Out");
                     AuthenticationUIManager.Instance.ShowStartPanel();
                 }
             }
