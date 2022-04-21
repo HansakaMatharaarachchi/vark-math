@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c4b869e22a0feb13b5825ba8de1014f, type: 3}
-  m_Name: 1-Achilles
+  m_Name: 3-Infiltrator
   m_EditorClassIdentifier: 
-  id: S_1
-  name: Achilles
+  id: S_3
+  name: Infiltrator
   type: 1
-  price: 50
-  prefab: {fileID: 3637333152396548060, guid: afa6308ea0032d7e8ad2a59f840c0c06, type: 3}
-  levelToBeUnlocked: 1
-  lobbyPrefab: {fileID: 1369468771914717599, guid: 9021c9969ad7b574ea067338f4a143ef,
+  price: 70
+  prefab: {fileID: 6376821022281176041, guid: 479992edd0d1586369fe29cc7953d86b, type: 3}
+  levelToBeUnlocked: 2
+  lobbyPrefab: {fileID: 8161801932585430587, guid: e976e93e12820fc638fc86fe684cac18,
     type: 3}

@@ -153,7 +153,7 @@ namespace _Scripts
 
         public void RestartGame()
         {
-            Destroy(this);
+            Destroy(gameObject);
             LoadScene(0);
         }
 
@@ -240,8 +240,8 @@ namespace _Scripts
         public void PlayLevel(int level)
         {
             currentLevel = level;
-            currentLevelProgress = new LevelProgress();
             currentLevelQuestions = levelManager.GetQuestionsForALevel(level, player.learningStyle);
+            currentLevelProgress = new LevelProgress(currentLevelQuestions.Length);
             // loads the fist question in the level
             currentQuestionIndex = 0;
             PlayQuestion(0);
@@ -271,6 +271,7 @@ namespace _Scripts
                 if (player.levelStats[currentLevel].isPassed)
                 {
                     player.levelStats[currentLevel].lastAttemptProgress = currentLevelProgress;
+                    player.levelStats[currentLevel].lastAttemptProgress.noOfAttempts ++;
                 }
                 else
                 {

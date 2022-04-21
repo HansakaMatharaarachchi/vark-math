@@ -1896,7 +1896,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.54124475}
   m_AnchoredPosition: {x: 0, y: -9.199997}
-  m_SizeDelta: {x: -100.89511, y: -78.93769}
+  m_SizeDelta: {x: -135.25217, y: -78.03506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979769467
 MonoBehaviour:
@@ -2554,8 +2554,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.41135, y: -32.730503}
-  m_SizeDelta: {x: 124.8227, y: 35.461006}
+  m_AnchoredPosition: {x: 60.23282, y: -33.18182}
+  m_SizeDelta: {x: 90.46564, y: 36.36364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239111650
 MonoBehaviour:
@@ -2914,7 +2914,7 @@ GameObject:
   - component: {fileID: 1626213236}
   - component: {fileID: 1626213237}
   m_Layer: 0
-  m_Name: StoreUIManager
+  m_Name: StoreManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1723,7 +1723,7 @@ MonoBehaviour:
   startPanel: {fileID: 1140909678}
   signUpLog: {fileID: 1280136358}
   signInLog: {fileID: 1933467295}
-  noConnectivityPanel: {fileID: 0}
+  noConnectivityPanel: {fileID: 445277252}
   emailSigninField: {fileID: 4952403924976284583}
   passwordSigninField: {fileID: 1162765367}
   parentSignupEmailField: {fileID: 1869717620}
@@ -2304,6 +2304,12 @@ CanvasRenderer:
 --- !u!224 &438800322 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6763980955837364880, guid: c482e22bdbdb1362c86e8560b17813bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 6763980955466528082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &445277252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6763980955837364883, guid: c482e22bdbdb1362c86e8560b17813bb,
     type: 3}
   m_PrefabInstance: {fileID: 6763980955466528082}
   m_PrefabAsset: {fileID: 0}

@@ -15,13 +15,11 @@ public class FuelBar : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < GameManager.Instance.currentLevelProgress.correctAnswersCount; i++)
+        for (int i = 0; i < GameManager.Instance.currentLevelProgress.noOfCorrectAnswers; i++)
         {
             Fill();
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         lerpSpeed = 3f * Time.deltaTime;

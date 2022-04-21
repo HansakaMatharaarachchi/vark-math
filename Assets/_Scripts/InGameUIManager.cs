@@ -11,9 +11,12 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private GameObject hUd;
     [SerializeField] private GameObject lvlResultPanel;
     [SerializeField] private GameObject questionResultPanel;
-    
-    [Header("Level Result Panel")]
-    [SerializeField] private GameObject lvlPassedPanel;
+    [SerializeField] private TMP_Text questionCorrectResultTxt;
+    [SerializeField] private GameObject nxtQBtnContainer;
+
+    [Header("Level Result Panel")] [SerializeField]
+    private GameObject lvlPassedPanel;
+
     [SerializeField] private TMP_Text passedLevelInfoText;
     [SerializeField] private GameObject rewardContainer;
     [SerializeField] private GameObject unlockedItemsContainer;
@@ -35,43 +38,50 @@ public class InGameUIManager : MonoBehaviour
         }
         else
         {
-            lvlResultPanel.transform.GetChild(1).gameObject.SetActive(true); 
+            lvlResultPanel.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
-    public void IsQuestionCorrect(bool state)
+    public async void IsQuestionCorrect(bool state)
     {
         questionResultPanel.SetActive(true);
         if (state)
         {
+            if (GameManager.Instance.currentLevelProgress.noOfCorrectAnswers == GameManager.Instance.currentLevelQuestions.Length)
+            {
+                questionCorrectResultTxt.text = "All fuel tanks are collected";
+                nxtQBtnContainer.SetActive(false);
+                questionResultPanel.transform.GetChild(0).gameObject.SetActive(true);
+                await Task.Delay(3000);
+                ShowResultPanel(true);
+                return;
+            }
             questionResultPanel.transform.GetChild(0).gameObject.SetActive(true);
         }
         else
         {
+            if (GameManager.Instance.currentLevelProgress.noOfWrongAnswers == GameManager.Instance.currentLevelQuestions.Length)
+            {
+                ShowResultPanel(false);
+                return;
+            }
             questionResultPanel.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
     public void RetryCurrentQuestion()
     {
-        if (GameManager.Instance.currentLevelProgress.noOfWrongAnswers == 3)
-        {
-            ShowResultPanel(false);
-        }
-        else
-        {
-            GameManager.Instance.PlayQuestion(GameManager.Instance.currentQuestionIndex);
-        }
+        GameManager.Instance.PlayQuestion(GameManager.Instance.currentQuestionIndex);
     }
 
     public void PlayNextQuestion()
     {
         GameManager.Instance.PlayQuestion(GameManager.Instance.currentQuestionIndex + 1);
     }
-    
+
     private async void ShowRewards()
     {
-        passedLevelInfoText.text = "You have successfully completed <br> Level " + 2;
+        passedLevelInfoText.text = "You have successfully completed <br> Level " + GameManager.Instance.currentLevel;
         await Task.Delay(3000);
         rewardContainer.SetActive(false);
         unlockedItemsContainer.SetActive(true);
@@ -84,7 +94,6 @@ public class InGameUIManager : MonoBehaviour
 
     public void PlayNextLvlOnClick()
     {
-        GameManager.Instance.SaveLastAttemptInCurrentLvl(true);
         GameManager.Instance.PlayLevel(GameManager.Instance.currentLevel + 1);
     }
 
