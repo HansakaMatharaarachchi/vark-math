@@ -3821,32 +3821,37 @@ MonoBehaviour:
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
-        correctAnswersCount: 0
         noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
-        correctAnswersCount: 0
         noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
-        correctAnswersCount: 0
         noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
-        correctAnswersCount: 0
         noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
-        correctAnswersCount: 0
         noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     learningStyle: 0
     isDailyRewardCollected: 0
@@ -3854,8 +3859,9 @@ MonoBehaviour:
   isSignedIn: 0
   currentLevel: 0
   currentLevelProgress:
-    correctAnswersCount: 0
     noOfQuestions: 3
+    noOfAttempts: 0
+    noOfCorrectAnswers: 0
     noOfWrongAnswers: 0
   currentLevelQuestions: 
   currentQuestionIndex: 0
