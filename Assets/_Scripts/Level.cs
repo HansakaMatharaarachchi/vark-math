@@ -13,13 +13,11 @@ namespace _Scripts
 
         public Level(LevelProgress progress)
         {
-            noOfAttempts = 1;
             lastAttemptProgress = progress;
         }
 
         public Level(LevelProgress progress, bool isPassed)
         {
-            noOfAttempts = 1;
             lastAttemptProgress = progress;
             this.isPassed = isPassed;
         }

@@ -20,40 +20,42 @@ public class ParentsFeedback : MonoBehaviour
 
     void Start()
     {
-        for (int i = 1; i <= levelSelections.Length; i++)
+        for (int i = 0; i < GameManager.Instance.player.levelStats.Length; i++)
         {
-            if (GameManager.Instance.player.levelStats[i] != null)
+            if (GameManager.Instance.player.levelStats[i].noOfAttempts > 0)
             {
                 levelSelections[i].interactable = true;
-                levelSelections[i].onClick.AddListener(delegate { ShowInfoForALevel(i); });
-            }
-            else
-            {
-                levelSelections[i].interactable = false;
             }
         }
-
         learningStyle.text = GameManager.Instance.player.learningStyle.ToString();
-        ShowInfoForALevel(GameManager.Instance.player.level - 1);
+        ShowInfoForALevel(GameManager.Instance.player.level - 1); // loads info for last unlocked level
     }
 
-    private void ShowInfoForALevel(int level)
+    public void ShowInfoForALevel(int level)
     {
-        //todo change according to the level title
-        levelInfo.text = level switch
+        if (GameManager.Instance.player.levelStats[level - 1].noOfAttempts > 0)
         {
-            1 => "Level " + level + " Counting",
-            2 => "Level " + level + " Counting",
-            3 => "Level " + level + " Counting",
-            4 => "Level " + level + " Counting",
-            5 => "Level " + level + " Counting",
-            _ => levelInfo.text
-        };
-        Level currentLevel = GameManager.Instance.player.levelStats[level];
-        noOfAttempts.text = currentLevel.noOfAttempts.ToString();
-        levelPassed.interactable = currentLevel.isPassed;
-        correctAnsCount.text = currentLevel.lastAttemptProgress.noOfCorrectAnswers.ToString();
-        wrongAnsCount.text = currentLevel.lastAttemptProgress.noOfWrongAnswers.ToString();
-        levelProgress.text = currentLevel.lastAttemptProgress.CalculateLevelProgress().ToString();
+            //todo change according to the level title
+            levelInfo.text = level switch
+            {
+                1 => "Level " + level + " Counting",
+                2 => "Level " + level + " Counting",
+                3 => "Level " + level + " Counting",
+                4 => "Level " + level + " Counting",
+                5 => "Level " + level + " Counting",
+                _ => levelInfo.text
+            };
+            Level currentLevel = GameManager.Instance.player.levelStats[level - 1];
+            noOfAttempts.text = currentLevel.noOfAttempts.ToString();
+            levelPassed.interactable = currentLevel.isPassed;
+            correctAnsCount.text = currentLevel.lastAttemptProgress.noOfCorrectAnswers.ToString();
+            wrongAnsCount.text = currentLevel.lastAttemptProgress.noOfWrongAnswers.ToString();
+            levelProgress.text = currentLevel.lastAttemptProgress.CalculateLevelProgress() + " %";
+        }
+    }
+
+    public void BackToLobby()
+    {
+        GameManager.Instance.LoadScene(2);
     }
 }

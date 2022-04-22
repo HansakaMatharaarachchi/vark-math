@@ -265,38 +265,40 @@ namespace _Scripts
         public void SaveLastAttemptInCurrentLvl(bool hasPassed)
         {
             // checks if the player has already played the level
-            if (player.levelStats[currentLevel] != null)
+            if (player.levelStats[currentLevel - 1].noOfAttempts > 0)
             {
                 // checks if the player has already passed the current level
                 // means that the attempt is a retry after completing the level
-                if (player.levelStats[currentLevel].isPassed)
+                if (player.levelStats[currentLevel - 1].isPassed)
                 {
-                    player.levelStats[currentLevel].lastAttemptProgress = currentLevelProgress;
-                    player.levelStats[currentLevel].lastAttemptProgress.noOfAttempts ++;
+                    player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
                 }
                 else
                 {
                     if (hasPassed)
                     {
                         player.level++;
-                        player.levelStats[currentLevel].isPassed = true;
-                        player.levelStats[currentLevel].lastAttemptProgress = currentLevelProgress;
+                        player.levelStats[currentLevel - 1].isPassed = true;
+                        player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
                     }
                     else
                     {
-                        player.levelStats[currentLevel].isPassed = false;
-                        player.levelStats[currentLevel].lastAttemptProgress = currentLevelProgress;
+                        player.levelStats[currentLevel - 1].isPassed = false;
+                        player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
                     }
                 }
+                player.levelStats[currentLevel - 1].noOfAttempts ++;
             }
             // save results of the first time level attempt
             else
             {
-                player.levelStats[currentLevel] = new Level(currentLevelProgress, hasPassed);
+                player.levelStats[currentLevel - 1] = new Level(currentLevelProgress, hasPassed);
+                player.levelStats[currentLevel - 1].noOfAttempts ++;
                 if (hasPassed)
                 {
                     player.level++;
                     player.GoldCoinAmount += 20;
+                    
                 }
             }
         }

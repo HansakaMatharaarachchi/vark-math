@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace _Scripts
 {
@@ -34,6 +33,10 @@ namespace _Scripts
             Age = age;
             lastActiveDate = DateTime.Now.Date;
             lastActiveDatePlaytimeInSeconds = 0.0f;
+            for (int i = 0; i < levelStats.Length; i++)
+            {
+                levelStats[i] = new Level();
+            }
         }
 
         public void BuyItem(StoreItemObject storeItemObject)
