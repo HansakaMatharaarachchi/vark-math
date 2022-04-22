@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 22870124}
-  - component: {fileID: 22870123}
+  - component: {fileID: 22870125}
   m_Layer: 0
   m_Name: QuizManager
   m_TagString: Untagged
@@ -140,45 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &22870123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22870122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312c4d5e8c24e5f21a612b1042a03825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentsQuestionnaire:
-  - question: How many colors are mentioned in the song
-    options:
-    - 2
-    - 3
-    - 4
-    correctAnswer: 3
-  - question: which color is not mentioned the song?
-    options:
-    - Green
-    - Red
-    - Black
-    correctAnswer: 3
-  - question: who is singing the song?
-    options:
-    - Man
-    - Women
-    - Animal
-    correctAnswer: 1
-  envContainer: {fileID: 1914969918}
-  questionPanel: {fileID: 1643673874}
-  endPanel: {fileID: 1623391071}
-  questionTxt: {fileID: 1195105737}
-  choices:
-  - {fileID: 105476523}
-  - {fileID: 567549263}
-  - {fileID: 1173836708}
 --- !u!4 &22870124
 Transform:
   m_ObjectHideFlags: 0
@@ -193,6 +154,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &22870125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22870122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1065e51fd5aa9744f8ad763595287ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsQuestionnaire:
+  - question: How many colors are mentioned in the song
+    options:
+    - 2
+    - 3
+    - 4
+    correctAnswer: 3
+  - question: Which color is not mentioned the song?
+    options:
+    - Green
+    - Red
+    - Black
+    correctAnswer: 3
+  - question: Who is singing the song?
+    options:
+    - Man
+    - Women
+    - Animal
+    correctAnswer: 1
+  envContainer: {fileID: 1914969918}
+  questionPanel: {fileID: 1643673874}
+  endPanel: {fileID: 1623391071}
+  questionTxt: {fileID: 1195105737}
+  choices:
+  - {fileID: 105476523}
+  - {fileID: 567549263}
+  - {fileID: 1173836708}
 --- !u!1 &62637970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Watch the following video and carefully answer the questions
+  m_text: Listen to the following audioclip and carefully answer the  questions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad46f6da97ebc70a09f6ae4920535557, type: 2}
   m_sharedMaterial: {fileID: 4713909157918133276, guid: ad46f6da97ebc70a09f6ae4920535557,
@@ -3169,7 +3169,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 22870123}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VIQuizManager, Assembly-CSharp
         m_MethodName: StartQuiz
         m_Mode: 1
