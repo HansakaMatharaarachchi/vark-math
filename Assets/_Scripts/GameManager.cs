@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
 using System.Threading.Tasks;
@@ -17,6 +16,7 @@ namespace _Scripts
         public Store store;
         public LevelManager levelManager;
         private FirebaseManager firebaseManager;
+        private NotificationManager notificationManager;
         public bool isSignedIn;
 
         public int currentLevel;
@@ -52,6 +52,7 @@ namespace _Scripts
 
         private async void InitGame()
         {
+            notificationManager = new NotificationManager();
             store = new Store();
             levelManager = new LevelManager();
             player = await firebaseManager.RetrieveUserDataAsync();
