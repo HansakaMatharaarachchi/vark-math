@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpaceShipObject : StoreItemObject
 {
     public GameObject lobbyPrefab;
+    public GameObject journeyPrefab;
     private void Awake()
     {
         type = StoreItemType.SpaceShip;

@@ -20,3 +20,5 @@ MonoBehaviour:
   levelToBeUnlocked: 2
   lobbyPrefab: {fileID: 4204827634503638611, guid: f61a5896525457f08ade866ff8e9257a,
     type: 3}
+  journeyPrefab: {fileID: 6706682410220579287, guid: 875e3b45189165789a1c069da0f9f8c0,
+    type: 3}

@@ -16,7 +16,9 @@ MonoBehaviour:
   name: Negotiator
   type: 1
   price: 60
-  prefab: {fileID: 203382175825353728, guid: 464650d42d03d537eb23a3211e2a7e2b, type: 3}
+  prefab: {fileID: 3850075257148094301, guid: 464650d42d03d537eb23a3211e2a7e2b, type: 3}
   levelToBeUnlocked: 2
-  lobbyPrefab: {fileID: 669184796591378201, guid: 727b3d273823d8005b2659a740fc2517,
+  lobbyPrefab: {fileID: 4536765331318350916, guid: 727b3d273823d8005b2659a740fc2517,
+    type: 3}
+  journeyPrefab: {fileID: 3855435204503805661, guid: 10793b4ae46db834890b2ef2a290f547,
     type: 3}
