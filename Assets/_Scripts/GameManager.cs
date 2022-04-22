@@ -296,6 +296,7 @@ namespace _Scripts
                 if (hasPassed)
                 {
                     player.level++;
+                    player.GoldCoinAmount += 20;
                 }
             }
         }
