@@ -9,7 +9,7 @@ public class UserFeedback : MonoBehaviour
 
     [SerializeField] InputField feedback1;
 
-    string URL = "https://docs.google.com/forms/u/2/d/e/1FAIpQLSeG-zHYc-imlacHgnY9_Tez2a90IjGuYtwCxTEXSYbEUK7zew/formResponse";
+    string URL = "https://docs.google.com/forms/d/e/1FAIpQLScp7675PQbWtU58yemTK-Vji9juDG4VGZ4v8Wlb7onmpJOt3g/viewform?usp=sf_link";
 
 
     public void Send()
@@ -20,9 +20,9 @@ public class UserFeedback : MonoBehaviour
     IEnumerator Post(string s1)
     {
         WWWForm form = new WWWForm();
-        form.AddField("entry.1869543954", s1);
-        form.AddField("entry.1107065024", s1);
-        form.AddField("entry.833734402", s1);
+        // form.AddField("entry.1869543954_sentinel", s1);
+        // form.AddField("entry.1107065024_sentinel", s1);
+         form.AddField("entry.516175595", s1);
 
 
 
