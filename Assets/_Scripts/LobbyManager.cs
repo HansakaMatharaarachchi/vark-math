@@ -89,6 +89,11 @@ public class LobbyManager : MonoBehaviour
         GameManager.Instance.LoadScene(3);
     }
 
+    public void OpenParentsFeedback()
+    {
+        GameManager.Instance.LoadScene(14);
+    }
+    
     public void DisplayLevelSelection()
     {
         for (int i = 0; i < GameManager.Instance.player.level; i++)

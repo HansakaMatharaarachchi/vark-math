@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Fabian/Scenes/BG/spaceT1 1.unity
     guid: 1c4d5ac654dd272e28c3368f67e95c97
+  - enabled: 1
+    path: Assets/Fabian/Scenes/parents feedback.unity
+    guid: c370d15cb01b20249ba15f88a9a15407
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f0356e91825cde408ce0c67276aec5e,
       type: 2}

@@ -2,7 +2,6 @@
 public class LevelProgress
 {
     public int noOfQuestions;
-    public int noOfAttempts;
     public int noOfCorrectAnswers;
     public int noOfWrongAnswers;
 
@@ -10,19 +9,6 @@ public class LevelProgress
     {
         this.noOfQuestions = noOfQuestions;
     }
-    
-    public void AddCorrectAnswer()
-    {
-        noOfAttempts ++;
-        noOfCorrectAnswers += 1;
-    }
-    
-    public void AddWrongAnswer()
-    {
-        noOfAttempts ++;
-        noOfWrongAnswers += 1;
-    }
-
 
     public bool IsLevelPassed()
     {
@@ -35,7 +21,7 @@ public class LevelProgress
         {
             return noOfCorrectAnswers / noOfQuestions * 100;
         }
+
         return 100 - noOfWrongAnswers * 15;
     }
-
 }
