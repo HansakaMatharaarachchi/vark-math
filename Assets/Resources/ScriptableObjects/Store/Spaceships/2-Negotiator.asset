@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4b869e22a0feb13b5825ba8de1014f, type: 3}
+  m_Name: 2-Negotiator
+  m_EditorClassIdentifier: 
+  id: S_2
+  name: Negotiator
+  type: 1
+  price: 60
+  prefab: {fileID: 3850075257148094301, guid: 464650d42d03d537eb23a3211e2a7e2b, type: 3}
+  levelToBeUnlocked: 2
+  lobbyPrefab: {fileID: 4536765331318350916, guid: 727b3d273823d8005b2659a740fc2517,
+    type: 3}
+  journeyPrefab: {fileID: 3855435204503805661, guid: 10793b4ae46db834890b2ef2a290f547,
+    type: 3}

@@ -10,6 +10,7 @@ public class CountingVisual1 : Question
     
     // public Text evaluate;
     public Button[] answerBtnArr;
+    //public int current;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +20,11 @@ public class CountingVisual1 : Question
 
     public void RandQuest()
     {
-        int value1 = 7;
-        int value2 = 4;
-        int value3 = 2;
-        int value4 = 8;
+        int value1 = 1;
+        int value2 = 2;
+        int value3 = 3;
+        int value4 = 4;
+
 
         answerBtnArr[0].GetComponentInChildren<Text>().text = value1.ToString();
 
@@ -33,26 +35,11 @@ public class CountingVisual1 : Question
         //give random values for question and answers
 
 
-        answerBtnArr[0].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[1].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[2].onClick.AddListener(CheckAnswerRight);
-        answerBtnArr[3].onClick.AddListener(CheckAnswerCorrect);
+        answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[1].onClick.AddListener(SetAnswerCorrect);
+        answerBtnArr[2].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[3].onClick.AddListener(SetAnswerWrong);
 
-    }
-    public void CheckAnswerCorrect()
-    {
-        // evaluate.text = "wrong answer, Try again!!";
-
-        //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddWrongAnswer();
-       
-        //GameManager.Instance.PlayNextQuestion();
-
-    }
-    public void CheckAnswerRight()
-    {
-        // evaluate.text = "correct answer, You won!!";
-        //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddCorrectAnswer();
-        //GameManager.Instance.PlayNextQuestion();
     }
 
 }

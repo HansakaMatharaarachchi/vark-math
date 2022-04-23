@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4b869e22a0feb13b5825ba8de1014f, type: 3}
+  m_Name: 3-Infiltrator
+  m_EditorClassIdentifier: 
+  id: S_3
+  name: Infiltrator
+  type: 1
+  price: 70
+  prefab: {fileID: 6376821022281176041, guid: 479992edd0d1586369fe29cc7953d86b, type: 3}
+  levelToBeUnlocked: 2
+  lobbyPrefab: {fileID: 8161801932585430587, guid: e976e93e12820fc638fc86fe684cac18,
+    type: 3}
+  journeyPrefab: {fileID: 7881058672677437376, guid: 5c7b72de8767ed9f7b71346b3f1148c2,
+    type: 3}

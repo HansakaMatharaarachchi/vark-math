@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 using _Scripts;
 using UnityEngine;
 using UnityEngine.UI;
-public class CountingVisual2 : MonoBehaviour
+public class CountingVisual2 : Question
 {
-    
-    public Text evaluate;
+
+    // public Text evaluate;
     public Button[] answerBtnArr;
-    public Text go;
+    //public int current;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +20,11 @@ public class CountingVisual2 : MonoBehaviour
 
     public void RandQuest()
     {
-        int value1 = 5;
-        int value2 = 4;
-        int value3 = 2;
-        int value4 = 3;
+        int value1 = 4;
+        int value2 = 5;
+        int value3 = 6;
+        int value4 = 7;
+
 
         answerBtnArr[0].GetComponentInChildren<Text>().text = value1.ToString();
 
@@ -33,28 +35,11 @@ public class CountingVisual2 : MonoBehaviour
         //give random values for question and answers
 
 
-        answerBtnArr[0].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[1].onClick.AddListener(CheckAnswerRight);
-        answerBtnArr[2].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[3].onClick.AddListener(CheckAnswerCorrect);
+        answerBtnArr[0].onClick.AddListener(SetAnswerCorrect);
+        answerBtnArr[1].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[2].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[3].onClick.AddListener(SetAnswerWrong);
 
-    }
-    public void CheckAnswerCorrect()
-    {
-        evaluate.text = "wrong answer, Try again!!";
-        go.text = "Try again!";
-
-        //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddWrongAnswer();
-       
-        //GameManager.Instance.PlayNextQuestion();
-
-    }
-    public void CheckAnswerRight()
-    {
-        evaluate.text = "correct answer, You won!!";
-        go.text = "Next";
-       // GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddCorrectAnswer();
-       // GameManager.Instance.PlayNextQuestion();
     }
 
 }

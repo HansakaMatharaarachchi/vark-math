@@ -1,40 +1,27 @@
 [System.Serializable]
 public class LevelProgress
-
-//used when he attempts
-
 {
-    public int noOfQuestions = 3;
-    public int noOfAttempts;
-    public int correctAnswers;
-    public int wrongAnswers;
+    public int noOfQuestions;
+    public int noOfCorrectAnswers;
+    public int noOfWrongAnswers;
 
-
-    public void AddCorrectAnswer()
+    public LevelProgress(int noOfQuestions)
     {
-        noOfAttempts ++;
-        correctAnswers += 1;
+        this.noOfQuestions = noOfQuestions;
     }
-    
-    public void AddWrongAnswer()
-    {
-        noOfAttempts ++;
-        wrongAnswers += 1;
-    }
-
 
     public bool IsLevelPassed()
     {
-        return correctAnswers == noOfQuestions;
+        return noOfCorrectAnswers == noOfQuestions;
     }
 
     public int CalculateLevelProgress()
     {
         if (!IsLevelPassed())
         {
-            return correctAnswers / noOfQuestions * 100;
+            return noOfCorrectAnswers / noOfQuestions * 100;
         }
-        return 100 - wrongAnswers * 15;
-    }
 
+        return 100 - noOfWrongAnswers * 15;
+    }
 }

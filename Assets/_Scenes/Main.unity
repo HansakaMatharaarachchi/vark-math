@@ -1723,7 +1723,7 @@ MonoBehaviour:
   startPanel: {fileID: 1140909678}
   signUpLog: {fileID: 1280136358}
   signInLog: {fileID: 1933467295}
-  noConnectivityPanel: {fileID: 438800321}
+  noConnectivityPanel: {fileID: 445277252}
   emailSigninField: {fileID: 4952403924976284583}
   passwordSigninField: {fileID: 1162765367}
   parentSignupEmailField: {fileID: 1869717620}
@@ -2301,15 +2301,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435574212}
   m_CullTransparentMesh: 1
---- !u!1 &438800321 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6763980955837364883, guid: c482e22bdbdb1362c86e8560b17813bb,
-    type: 3}
-  m_PrefabInstance: {fileID: 6763980955466528082}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &438800322 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6763980955837364880, guid: c482e22bdbdb1362c86e8560b17813bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 6763980955466528082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &445277252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6763980955837364883, guid: c482e22bdbdb1362c86e8560b17813bb,
     type: 3}
   m_PrefabInstance: {fileID: 6763980955466528082}
   m_PrefabAsset: {fileID: 0}
@@ -3408,7 +3408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Version 0.0.1
+  m_Text: Version 0.0.2
 --- !u!222 &944041653
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3816,12 +3816,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player:
-    levels: []
+    level: 1
+    levelStats:
+    - isPassed: 0
+      noOfAttempts: 0
+      lastAttemptProgress:
+        noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
+        noOfWrongAnswers: 0
+    - isPassed: 0
+      noOfAttempts: 0
+      lastAttemptProgress:
+        noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
+        noOfWrongAnswers: 0
+    - isPassed: 0
+      noOfAttempts: 0
+      lastAttemptProgress:
+        noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
+        noOfWrongAnswers: 0
+    - isPassed: 0
+      noOfAttempts: 0
+      lastAttemptProgress:
+        noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
+        noOfWrongAnswers: 0
+    - isPassed: 0
+      noOfAttempts: 0
+      lastAttemptProgress:
+        noOfQuestions: 3
+        noOfAttempts: 0
+        noOfCorrectAnswers: 0
+        noOfWrongAnswers: 0
     learningStyle: 0
     isDailyRewardCollected: 0
     lastActiveDatePlaytimeInSeconds: 0
   isSignedIn: 0
+  currentLevel: 0
+  currentLevelProgress:
+    noOfQuestions: 3
+    noOfAttempts: 0
+    noOfCorrectAnswers: 0
+    noOfWrongAnswers: 0
+  currentLevelQuestions: 
   currentQuestionIndex: 0
+  screenGuardWarningCanvas: {fileID: 7835095623101032913, guid: ede3a2aa512e061a48f13b0b6efa7c86,
+    type: 3}
 --- !u!4 &1040256308
 Transform:
   m_ObjectHideFlags: 0
@@ -8478,7 +8523,7 @@ GameObject:
   - component: {fileID: 2105370352}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

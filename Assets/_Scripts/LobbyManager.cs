@@ -10,8 +10,9 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] private TMP_Text userLevel;
     [SerializeField] private TMP_Text userName;
     [SerializeField] private TMP_Text goldCoinAmount;
-    [SerializeField] private TMP_Text soilSampleAmount;
+    [SerializeField] private TMP_Text soilSampleAmount; // todo remove
     [SerializeField] private Transform playerContainer;
+    [SerializeField] private Transform spaceShipContainer;
     [SerializeField] private Button[] levelChoices;
     
     [SerializeField] private Transform rewardCollectedStatus;
@@ -28,15 +29,29 @@ public class LobbyManager : MonoBehaviour
             rewardAvailableImage.enabled = true;
         }
         userName.text = GameManager.Instance.player.Name;
-        userLevel.text = (GameManager.Instance.player.levels.Count + 1).ToString(); //todo check if its correct
+        userLevel.text = (GameManager.Instance.player.level).ToString();
         DisplayEquippedItems();
     }
 
     private void DisplayEquippedItems()
     {
+        DisplaySpaceShip();
+        DisplayCharacter();
+    }
+
+    private void DisplaySpaceShip()
+    {
+        if (spaceShipContainer.childCount > 0)
+            Destroy(playerContainer.GetChild(0).gameObject);
+        GameObject spaceShip = ((SpaceShipObject) GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedSpaceShipId())).lobbyPrefab;
+        Instantiate(spaceShip, spaceShipContainer);
+    }
+
+    private void DisplayCharacter()
+    {
         if (playerContainer.childCount > 0)
             Destroy(playerContainer.GetChild(0).gameObject);
-        var character = ((CostumeObject) GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedCostumeId())).lobbyPrefab;
+        GameObject character = ((CostumeObject) GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedCostumeId())).lobbyPrefab;
         Instantiate(character, playerContainer.position, playerContainer.rotation, playerContainer);
     }
 
@@ -74,9 +89,14 @@ public class LobbyManager : MonoBehaviour
         GameManager.Instance.LoadScene(3);
     }
 
+    public void OpenParentsFeedback()
+    {
+        GameManager.Instance.LoadScene(14);
+    }
+    
     public void DisplayLevelSelection()
     {
-        for (int i = 0; i < GameManager.Instance.player.levels.Count + 1; i++)
+        for (int i = 0; i < GameManager.Instance.player.level; i++)
         {
             levelChoices[i].interactable = true;
             levelChoices[i].transform.GetChild(1).GetComponentInChildren<Image>().enabled = false;

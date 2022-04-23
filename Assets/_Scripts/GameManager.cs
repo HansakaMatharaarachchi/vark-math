@@ -1,9 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
 using System.Threading.Tasks;
 using _Scripts.Firebase;
+using _Scripts.Utils;
 using Firebase.Auth;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,13 +16,15 @@ namespace _Scripts
         public Store store;
         public LevelManager levelManager;
         private FirebaseManager firebaseManager;
+        private NotificationManager notificationManager;
         public bool isSignedIn;
-        
-        
+
         public int currentLevel;
         public LevelProgress currentLevelProgress;
         public int[] currentLevelQuestions;
         public int currentQuestionIndex;
+
+        [SerializeField] private GameObject screenGuardWarningCanvas;
 
         protected override async void Awake()
         {
@@ -38,7 +40,7 @@ namespace _Scripts
                 }
                 else
                 {
-                    Debug.Log("Signed  oUT");
+                    Debug.Log("Signed Out");
                     AuthenticationUIManager.Instance.ShowStartPanel();
                 }
             }
@@ -48,6 +50,31 @@ namespace _Scripts
             }
         }
 
+        private async void InitGame()
+        {
+            notificationManager = new NotificationManager();
+            store = new Store();
+            levelManager = new LevelManager();
+            player = await firebaseManager.RetrieveUserDataAsync();
+            if (player.learningStyle == 0)
+            {
+                player.learningStyle = FindLearningStyle();
+            }
+
+            // resets daily stats for a new day
+            if (DateTime.Compare(DateTime.Now.Date, player.lastActiveDate) > 0)
+            {
+                player.lastActiveDate = DateTime.Now.Date;
+                player.lastActiveDatePlaytimeInSeconds = 0.0f;
+                player.isDailyRewardCollected = false;
+            }
+
+            StartScreenAddictionShieldAsync(); //todo fix when max === now
+            await LoadSceneAsync(2);
+            // await MenuLoading(2);
+        }
+
+        
         //checks if the internet connectivity is available or not
         //https://stackoverflow.com/questions/2031824/what-is-the-best-way-to-check-for-internet-connectivity-using-net
         private static bool CheckForInternetConnection(int timeoutMs = 10000, string url = null)
@@ -77,28 +104,6 @@ namespace _Scripts
         }
 
 
-        private async void InitGame()
-        {
-            store = new Store();
-            levelManager = new LevelManager();
-            player = await firebaseManager.RetrieveUserDataAsync();
-            if (player.learningStyle == 0)
-            {
-                player.learningStyle = FindLearningStyle();
-            }
-
-            // resets daily stats for a new day
-            if (DateTime.Compare(DateTime.Now.Date, player.lastActiveDate) > 0)
-            {
-                player.lastActiveDate = DateTime.Now.Date;
-                player.lastActiveDatePlaytimeInSeconds = 0.0f;
-                player.isDailyRewardCollected = false;
-            }
-
-            await LoadSceneAsync(2);
-            // await MenuLoading(2);
-            StartScreenAddictionShieldAsync();
-        }
 
         public async Task<string> SignInUser(string email, string password)
         {
@@ -149,7 +154,7 @@ namespace _Scripts
 
         public void RestartGame()
         {
-            Destroy(this);
+            Destroy(gameObject);
             LoadScene(0);
         }
 
@@ -179,13 +184,13 @@ namespace _Scripts
         }
 
 
-        public LearningStyle FindLearningStyle()
+        private LearningStyle FindLearningStyle()
         {
             return LearningStyle.Visual;
             //Todo find learning style logic should be here 
         }
 
-        public async void StartScreenAddictionShieldAsync()
+        private async void StartScreenAddictionShieldAsync()
         {
             while (player.lastActiveDatePlaytimeInSeconds <= 3600)
             {
@@ -193,8 +198,14 @@ namespace _Scripts
                 player.lastActiveDatePlaytimeInSeconds++;
             }
 
-            Debug.Log("Time REACHED"); //todo add a block panel
-            Application.Quit();
+            Debug.Log("Daily Time REACHED");
+            Instantiate(screenGuardWarningCanvas);
+            await Task.Delay(3000);
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                     Application.Quit();
+#endif
         }
 
         public void LoadScene(int index)
@@ -231,29 +242,65 @@ namespace _Scripts
         {
             currentLevel = level;
             currentLevelQuestions = levelManager.GetQuestionsForALevel(level, player.learningStyle);
-            
-            // loads the fist question in the level
+            currentLevelProgress = new LevelProgress(currentLevelQuestions.Length);
             currentQuestionIndex = 0;
-            LoadScene(currentLevelQuestions[currentQuestionIndex]);
-            
-            currentQuestionIndex++;
+            // loads the BG story - adventure
+            LoadScene(13);
         }
 
-        public void PlayNextQuestion()
+        public void PlayQuestion(int index)
         {
-            if (currentQuestionIndex < currentLevelQuestions.Length)
+            if (index < currentLevelQuestions.Length)
             {
-                LoadScene(currentLevelQuestions[currentQuestionIndex]);
+                LoadScene(currentLevelQuestions[index]);
+                currentQuestionIndex = index;
             }
             else
             {
                 //means that player has successfully passed the level
                 Debug.Log("U HAVE COMPLETED THE LEVeEL");
-                // currentLevelProgress = null;
-                // currentLevelQuestions = null;
-                return;
             }
-            currentQuestionIndex++;
+        }
+
+        public void SaveLastAttemptInCurrentLvl(bool hasPassed)
+        {
+            // checks if the player has already played the level
+            if (player.levelStats[currentLevel - 1].noOfAttempts > 0)
+            {
+                // checks if the player has already passed the current level
+                // means that the attempt is a retry after completing the level
+                if (player.levelStats[currentLevel - 1].isPassed)
+                {
+                    player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
+                }
+                else
+                {
+                    if (hasPassed)
+                    {
+                        player.level++;
+                        player.levelStats[currentLevel - 1].isPassed = true;
+                        player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
+                    }
+                    else
+                    {
+                        player.levelStats[currentLevel - 1].isPassed = false;
+                        player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
+                    }
+                }
+                player.levelStats[currentLevel - 1].noOfAttempts ++;
+            }
+            // save results of the first time level attempt
+            else
+            {
+                player.levelStats[currentLevel - 1] = new Level(currentLevelProgress, hasPassed);
+                player.levelStats[currentLevel - 1].noOfAttempts ++;
+                if (hasPassed)
+                {
+                    player.level++;
+                    player.GoldCoinAmount += 20;
+                    
+                }
+            }
         }
 
         public void CollectDailyReward()

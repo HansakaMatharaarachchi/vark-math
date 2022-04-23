@@ -5,11 +5,12 @@ using UnityEngine;
 using _Scripts;
 using UnityEngine;
 using UnityEngine.UI;
-public class CountingVisual3 : MonoBehaviour
+public class CountingVisual3 : Question
 {
-    
-    public Text evaluate;
+
+    // public Text evaluate;
     public Button[] answerBtnArr;
+    //public int current;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +21,10 @@ public class CountingVisual3 : MonoBehaviour
     public void RandQuest()
     {
         int value1 = 7;
-        int value2 = 4;
-        int value3 = 10;
-        int value4 = 8;
+        int value2 = 8;
+        int value3 = 9;
+        int value4 = 10;
+
 
         answerBtnArr[0].GetComponentInChildren<Text>().text = value1.ToString();
 
@@ -33,26 +35,11 @@ public class CountingVisual3 : MonoBehaviour
         //give random values for question and answers
 
 
-        answerBtnArr[0].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[1].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[2].onClick.AddListener(CheckAnswerRight);
-        answerBtnArr[3].onClick.AddListener(CheckAnswerCorrect);
+        answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[1].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[2].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[3].onClick.AddListener(SetAnswerCorrect);
 
-    }
-    public void CheckAnswerCorrect()
-    {
-        evaluate.text = "wrong answer, Try again!!";
-
-        //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddWrongAnswer();
-       
-        //GameManager.Instance.PlayNextQuestion();
-
-    }
-    public void CheckAnswerRight()
-    {
-        evaluate.text = "correct answer, You won!!";
-        //GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddCorrectAnswer();
-        //GameManager.Instance.PlayNextQuestion();
     }
 
 }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    private int maxHealth = 3;
     private int health = 3;
     [SerializeField] private Image[] filledHearts;
 
@@ -19,14 +18,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    public void IncreaseHealth()
-    {
-        if (health >= maxHealth) return;
-        filledHearts[health].enabled = true;
-        ++health;
-    }
-
-    public void DecreaseHealth()
+    private void DecreaseHealth()
     {
         if (health == 0) return;
         --health;
