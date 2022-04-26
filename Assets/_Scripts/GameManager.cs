@@ -271,7 +271,7 @@ namespace _Scripts
             currentLevelProgress = new LevelProgress(currentLevelQuestions.Length);
             currentQuestionIndex = 0;
             // loads the BG story - adventure
-            LoadScene(13);
+            LoadScene(12);
         }
 
         public void PlayQuestion(int index)
