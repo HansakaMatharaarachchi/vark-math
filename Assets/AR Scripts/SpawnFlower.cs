@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnFlower : MonoBehaviour
-{
+public class SpawnFlower : MonoBehaviour { 
     // Start is called before the first frame update
-   
-        public Transform[] spawnPoints;
+
+public Transform[] spawnPoints;
         public GameObject[] balloons;
         void Start()
         {
@@ -25,6 +24,7 @@ public class SpawnFlower : MonoBehaviour
          
 
         }
+
 
 
 

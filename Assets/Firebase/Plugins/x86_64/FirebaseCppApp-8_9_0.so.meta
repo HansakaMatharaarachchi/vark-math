@@ -1,76 +1,54 @@
 fileFormatVersion: 2
-guid: 5be7e71b5f49495fb467a0de99861f08
+guid: b758912960ce8b84f87df23e145cca72
 labels:
 - gvh
-- gvh_version-8.9.0
-- gvhp_exportpath-Firebase/Plugins/x86_64/FirebaseCppApp-8_9_0.so
-timeCreated: 1480838400
 PluginImporter:
-  serializedVersion: 1
+  externalObjects: {}
+  serializedVersion: 2
   iconMap: {}
   executionOrder: {}
+  defineConstraints: []
   isPreloaded: 0
+  isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
   platformData:
-    Android:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Any:
-      enabled: 0
+  - first:
+      Any: 
+    second:
+      enabled: 1
       settings: {}
-    Editor:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-        DefaultValueInitialized: true
-        OS: AnyOS
-    Linux:
+  - first:
+      Editor: Editor
+    second:
       enabled: 0
-      settings:
-        CPU: None
-    Linux64:
-      enabled: 1
       settings:
         CPU: x86_64
-    LinuxUniversal:
+        DefaultValueInitialized: true
+  - first:
+      Standalone: Linux64
+    second:
       enabled: 1
       settings:
         CPU: AnyCPU
-    OSXIntel:
+  - first:
+      Standalone: OSXUniversal
+    second:
+      enabled: 0
+      settings:
+        CPU: x86_64
+  - first:
+      Standalone: Win
+    second:
       enabled: 0
       settings:
         CPU: None
-    OSXIntel64:
-      enabled: 0
-      settings:
-        CPU: None
-    OSXUniversal:
-      enabled: 0
-      settings:
-        CPU: None
-    Web:
-      enabled: 0
-      settings: {}
-    WebStreamed:
-      enabled: 0
-      settings: {}
-    Win:
-      enabled: 0
-      settings:
-        CPU: None
-    Win64:
-      enabled: 0
-      settings:
-        CPU: None
-    WindowsStoreApps:
-      enabled: 0
+  - first:
+      Standalone: Win64
+    second:
+      enabled: 1
       settings:
         CPU: AnyCPU
-    iOS:
-      enabled: 0
-      settings:
-        CompileFlags:
-        FrameworkDependencies:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
