@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using _Scripts;
 
-public class ClickBtn2 : Question
-{
-
+public class ClickBtn2 : MonoBehaviour { 
+    //kins 2 introduction
 
 
     public Text evaluate;
@@ -23,28 +23,34 @@ public class ClickBtn2 : Question
     {
 
 
-        answerBtnArr[0].GetComponentInChildren<Text>().text = "green";
+        answerBtnArr[0].GetComponentInChildren<Text>().text = "cat";
 
-        answerBtnArr[1].GetComponentInChildren<Text>().text = "yellow";
+        answerBtnArr[1].GetComponentInChildren<Text>().text = "tiger";
          
         //give random values for question and answers
 
 
         answerBtnArr[0].onClick.AddListener(CheckAnswerCorrect);
-        answerBtnArr[1].onClick.AddListener(CheckAnswerCorrect);
+        answerBtnArr[1].onClick.AddListener(CheckAnswerRight);
         
          
-        answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
-        answerBtnArr[1].onClick.AddListener(SetAnswerCorrect);
+/*        answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[1].onClick.AddListener(SetAnswerCorrect);*/
 
     }
     public void CheckAnswerCorrect()
     {
 
         evaluate.text = "wrong answer";
-    }
+    GameManager.Instance.LoadNextScene();
+    PlayerPrefs.SetFloat("CK", 0);
+    GameManager.Instance.LoadNextScene();
+}
     public void CheckAnswerRight()
     {
         evaluate.text = "correct answer";
+        PlayerPrefs.SetFloat("CK", 1);
+        PlayerPrefs.Save();
+        GameManager.Instance.LoadNextScene();
     }
 }
