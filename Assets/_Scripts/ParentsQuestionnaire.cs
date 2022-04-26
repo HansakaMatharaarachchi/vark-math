@@ -3,79 +3,99 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Button = UnityEngine.UI.Button;
 
-[Serializable]
-public struct ParentsQuestion
+namespace _Scripts
 {
-    public string question;
-    public List<string> choices;
-}
-
-public class ParentsQuestionnaire : MonoBehaviour
-{
-    [SerializeField] private TMP_Text questionText;
-    [SerializeField] private ToggleGroup choices;
-    [SerializeField] private Button nextQuestionBtn;
-
-    [SerializeField] private List<ParentsQuestion> parentsQuestionnaire = new List<ParentsQuestion>();
-
-    private int visual, auditory, kinesthetic;
-    private int selectedIndex;
-
-    private void Start()
+    [Serializable]
+    public struct ParentsQuestion
     {
-        DisplayQuestionsAndAnswers(selectedIndex);
-        nextQuestionBtn.onClick.AddListener(ChangeQuestion);
+        public string question;
+        public List<string> choices;
     }
 
-    private void ChangeQuestion()
+    public class ParentsQuestionnaire : MonoBehaviour
     {
-        selectedIndex++;
-        CollectResponse();
-        if (selectedIndex < 10)
+        [SerializeField] private TMP_Text questionText;
+        [SerializeField] private ToggleGroup choices;
+        [SerializeField] private Button nextQuestionBtn;
+
+        [SerializeField] private List<ParentsQuestion> parentsQuestionnaire = new List<ParentsQuestion>();
+
+        [SerializeField] private GameObject introChildPanel;
+
+        private int visual, auditory, kinesthetic;
+        private int selectedIndex;
+
+        private void Start()
         {
             DisplayQuestionsAndAnswers(selectedIndex);
-            if (selectedIndex == 9)
+            nextQuestionBtn.onClick.AddListener(ChangeQuestion);
+        }
+
+        private void ChangeQuestion()
+        {
+            selectedIndex++;
+            CollectResponse();
+            if (selectedIndex < parentsQuestionnaire.Count)
             {
-                nextQuestionBtn.GetComponentInChildren<TMP_Text>().text = "Finish";
+                DisplayQuestionsAndAnswers(selectedIndex);
+                if (selectedIndex == 9)
+                {
+                    nextQuestionBtn.GetComponentInChildren<TMP_Text>().text = "Finish";
+                }
+            }
+            else
+                // all answers are collected
+            {
+                PlayerPrefs.DeleteAll();
+                PlayerPrefs.SetFloat("PV", (float) visual / parentsQuestionnaire.Count);
+                PlayerPrefs.SetFloat("PA", (float) auditory / parentsQuestionnaire.Count);
+                PlayerPrefs.SetFloat("PK", (float) kinesthetic / parentsQuestionnaire.Count);
+                PlayerPrefs.Save();
+                introChildPanel.SetActive(true);
+            }
+
+            Debug.Log("V " + visual + " A " + auditory + " K " + kinesthetic);
+        }
+
+        private void CollectResponse()
+        {
+            switch (choices.GetFirstActiveToggle().name)
+            {
+                case "Visual":
+                    ++visual;
+                    break;
+                case "Auditory":
+                    ++auditory;
+                    break;
+
+                case "Kinesthetic":
+                    ++kinesthetic;
+                    break;
+            }
+
+            choices.SetAllTogglesOff();
+        }
+
+        private void DisplayQuestionsAndAnswers(int index)
+        {
+            Debug.Log(index);
+            questionText.text = index + 1 + ". " + parentsQuestionnaire[index].question;
+            for (int i = 0; i < choices.transform.childCount; i++)
+            {
+                choices.transform.GetChild(i).gameObject.GetComponentInChildren<Text>().text =
+                    parentsQuestionnaire[index].choices[i];
             }
         }
-        Debug.Log("V " + visual + " A " + auditory + " K " + kinesthetic);
-    }
 
-    private void CollectResponse()
-    {
-        switch (choices.GetFirstActiveToggle().name)
+        private void Update()
         {
-            case "Visual":
-                ++visual;
-                break;
-            case "Auditory":
-                ++auditory;
-                break;
-
-            case "Kinesthetic":
-                ++kinesthetic;
-                break;
+            nextQuestionBtn.interactable = choices.AnyTogglesOn();
         }
 
-        choices.SetAllTogglesOff();
-    }
-
-    private void DisplayQuestionsAndAnswers(int index)
-    {
-        Debug.Log(index);
-        questionText.text = index + 1 + ". " + parentsQuestionnaire[index].question;
-        for (int i = 0; i < choices.transform.childCount; i++)
+        public void LoadChildIntro()
         {
-            choices.transform.GetChild(i).gameObject.GetComponentInChildren<Text>().text =
-                parentsQuestionnaire[index].choices[i];
+            GameManager.Instance.LoadNextScene();
         }
-    }
-
-    private void Update()
-    {
-        nextQuestionBtn.interactable = choices.AnyTogglesOn();
     }
 }

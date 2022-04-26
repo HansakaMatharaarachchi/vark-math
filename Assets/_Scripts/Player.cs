@@ -4,6 +4,7 @@ namespace _Scripts
 {
     public enum LearningStyle
     {
+        NotSet,
         Visual,
         Auditory,
         Kinesthetic

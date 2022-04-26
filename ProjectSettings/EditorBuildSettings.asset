@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/Main.unity
     guid: 6bf262d0f4352445e81af275dd344125
   - enabled: 1
-    path: Assets/WorkingScenes/Quessioniare.unity
-    guid: c3da339eefcd6a04fb5014efa03f3c0e
-  - enabled: 1
     path: Assets/_Scenes/Lobby.unity
     guid: d0c735667090fcf8e82ec5862538044b
   - enabled: 1
@@ -50,6 +47,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Fabian/Scenes/parents feedback.unity
     guid: c370d15cb01b20249ba15f88a9a15407
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/ParentsQuestionnaire.unity
+    guid: 832405d54993cf1219df2f37e0989850
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/V-Introductory.unity
+    guid: e3d7e79b7e30eb443a84af6d90390983
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/A-Introductory.unity
+    guid: 9aa390042a4481f3685aaf740f5cba0b
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f0356e91825cde408ce0c67276aec5e,
       type: 2}
