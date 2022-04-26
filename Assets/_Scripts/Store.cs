@@ -16,8 +16,7 @@ namespace _Scripts
             Items.Add("SpaceShips", Resources.LoadAll<StoreItemObject>("ScriptableObjects/Store/SpaceShips"));
             Items.Add("Equipments", Resources.LoadAll<StoreItemObject>("ScriptableObjects/Store/Equipments"));
         }
-
-
+        
         public StoreItemObject GetItemBuyId(string id)
         {
             switch (id.Substring(0, 1))
