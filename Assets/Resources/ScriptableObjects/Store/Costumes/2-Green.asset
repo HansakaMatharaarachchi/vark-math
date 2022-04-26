@@ -15,7 +15,7 @@ MonoBehaviour:
   id: C_2
   name: Green
   type: 0
-  price: 50
+  price: 40
   prefab: {fileID: 9055234988450325175, guid: 00b47d4da3f49fab4bd735bf50724b3c, type: 3}
   levelToBeUnlocked: 2
   lobbyPrefab: {fileID: 4204827634503638611, guid: f61a5896525457f08ade866ff8e9257a,

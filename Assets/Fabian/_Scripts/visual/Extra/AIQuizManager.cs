@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using _Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,11 +19,14 @@ public class AIQuizManager : MonoBehaviour
     [SerializeField] private GameObject envContainer;
     [SerializeField] private GameObject questionPanel;
     [SerializeField] private GameObject endPanel;
+    [SerializeField] private GameObject findingTheStylePanel;
 
     [SerializeField] private TMP_Text questionTxt;
     [SerializeField] private Button[] choices;
 
     [SerializeField] private AudioSource audioSource;
+    
+    [SerializeField] private TMP_Text detectedLearningStyleTxt;
 
     private int selectedQuestionIndex;
     private int correctAnswersCount;
@@ -49,7 +53,7 @@ public class AIQuizManager : MonoBehaviour
         }
     }
 
-    private void DisplayQuestion()
+    private async void DisplayQuestion()
     {
         if (parentsQuestionnaire.Count > selectedQuestionIndex)
         {
@@ -63,8 +67,13 @@ public class AIQuizManager : MonoBehaviour
         else
         {
             questionPanel.SetActive(false);
+            PlayerPrefs.SetFloat("CA", (float)correctAnswersCount / parentsQuestionnaire.Count);
+            PlayerPrefs.Save();            
+            findingTheStylePanel.SetActive(true);
+            await Task.Delay(2000);
+            findingTheStylePanel.SetActive(false);
             endPanel.SetActive(true);
-            Debug.Log(correctAnswersCount + " " + selectedQuestionIndex);
+            detectedLearningStyleTxt.text =  "You have been detected as a <br> <br>" + GameManager.Instance.FindLearningStyle() + " learner";
         }
     }
 
@@ -75,12 +84,12 @@ public class AIQuizManager : MonoBehaviour
         {
             ++correctAnswersCount;
         }
-        else
-        {
-            Debug.Log("YA STUPID");
-        }
-
         ++selectedQuestionIndex;
         DisplayQuestion();
+    }
+
+    public void GoToLobby()
+    {
+        GameManager.Instance.InitGame();
     }
 }
