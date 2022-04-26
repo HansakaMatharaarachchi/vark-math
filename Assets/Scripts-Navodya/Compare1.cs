@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Compare1 : MonoBehaviour
+public class Compare1 : Question
 {
     // Start is called before the first frame update
 
@@ -16,6 +16,8 @@ public class Compare1 : MonoBehaviour
     {
         btn1Anna.onClick.AddListener(CheckAnswerCorrect);
         btn2.onClick.AddListener(CheckAnswer);
+        btn1Anna.onClick.AddListener(SetAnswerCorrect);
+        btn2.onClick.AddListener(SetAnswerWrong);
     }
 
  public void CheckAnswer()
