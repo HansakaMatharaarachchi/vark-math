@@ -1,6 +1,7 @@
 name: Actions 😎
 
-on: [push]
+on: workflow_dispatch: {}
+  #[push]
 
 jobs:
   build:
@@ -59,4 +60,3 @@ jobs:
         with:
           name: Build
           path: build
-
