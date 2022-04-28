@@ -1,12 +1,12 @@
-name: Actions 😎
+name: Integration ⚙️
 
 on:
-  workflow_dispatch: {}
-  #[push]
+  pull_request_target:
+    branches: [dev]
 
 jobs:
   build:
-    name: Build my project ✨
+    name: test-pull-request 🧪
     runs-on: ubuntu-latest
     steps:
       # Checkout (without LFS)
@@ -46,18 +46,8 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      # Build
-      - name: Build project
-        uses: game-ci/unity-builder@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          targetPlatform: Android
-
       # Output
       - uses: actions/upload-artifact@v2
         with:
-          name: Build
-          path: build
+          name: Test results (all modes)
+          path: ${{ steps.tests.outputs.artifactsPath }}
