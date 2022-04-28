@@ -24,7 +24,7 @@ public class ClickBtn3 : MonoBehaviour
     {
 
 
-        answerBtnArr[0].GetComponentInChildren<Text>().text = "blue";
+        answerBtnArr[0].GetComponentInChildren<Text>().text = "pink";
 
         answerBtnArr[1].GetComponentInChildren<Text>().text = "yellow";
          

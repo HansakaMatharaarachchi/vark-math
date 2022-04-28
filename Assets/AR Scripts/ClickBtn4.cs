@@ -24,7 +24,7 @@ public class ClickBtn4 : MonoBehaviour
 
         answerBtnArr[0].GetComponentInChildren<Text>().text = "red";
 
-        answerBtnArr[1].GetComponentInChildren<Text>().text = "green";
+        answerBtnArr[1].GetComponentInChildren<Text>().text = "yellow";
          
         //give random values for question and answers
 
