@@ -1,13 +1,22 @@
-name: Actions 😎
+name: Integration ⚙️
 
 on:
   workflow_dispatch: {}
-  #[push]
+  pull_request_target:
+    branches: [dev, main]
 
 jobs:
-  build:
-    name: Build my project ✨
+  test:
+    name: test-pull-request 🧪
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - ${{ github.workspace }}
+        testMode:
+          - playmode
+          - editmode
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
@@ -30,34 +39,25 @@ jobs:
           git add .
           git reset --hard
 
-      # Cache
       - uses: actions/cache@v2
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}
           restore-keys: |
             Library-
 
-      # Test
-      - name: Run tests
-        uses: game-ci/unity-test-runner@v2
+      - uses: game-ci/unity-test-runner@v2
+        id: tests
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          projectPath: ${{ matrix.projectPath }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-
-      # Build
-      - name: Build project
-        uses: game-ci/unity-builder@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          targetPlatform: Android
-
-      # Output
+          checkName: ${{ matrix.testMode }} Test Results
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
-          name: Build
-          path: build
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.artifactsPath }}
