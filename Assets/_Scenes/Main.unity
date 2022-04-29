@@ -3815,50 +3815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6566184a296c0dd8aebcb3bcc0485e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    level: 1
-    levelStats:
-    - isPassed: 0
-      noOfAttempts: 0
-      lastAttemptProgress:
-        noOfQuestions: 3
-        noOfCorrectAnswers: 0
-        noOfWrongAnswers: 0
-    - isPassed: 0
-      noOfAttempts: 0
-      lastAttemptProgress:
-        noOfQuestions: 3
-        noOfCorrectAnswers: 0
-        noOfWrongAnswers: 0
-    - isPassed: 0
-      noOfAttempts: 0
-      lastAttemptProgress:
-        noOfQuestions: 3
-        noOfCorrectAnswers: 0
-        noOfWrongAnswers: 0
-    - isPassed: 0
-      noOfAttempts: 0
-      lastAttemptProgress:
-        noOfQuestions: 3
-        noOfCorrectAnswers: 0
-        noOfWrongAnswers: 0
-    - isPassed: 0
-      noOfAttempts: 0
-      lastAttemptProgress:
-        noOfQuestions: 3
-        noOfCorrectAnswers: 0
-        noOfWrongAnswers: 0
-    learningStyle: 0
-    isDailyRewardCollected: 0
-    lastActiveDatePlaytimeInSeconds: 0
-  isSignedIn: 0
-  currentLevel: 0
-  currentLevelProgress:
-    noOfQuestions: 3
-    noOfCorrectAnswers: 0
-    noOfWrongAnswers: 0
-  currentLevelQuestions: 
-  currentQuestionIndex: 0
   screenGuardWarningCanvas: {fileID: 7835095623101032913, guid: ede3a2aa512e061a48f13b0b6efa7c86,
     type: 3}
 --- !u!4 &1040256308

@@ -3,7 +3,7 @@ namespace _Scripts
     [System.Serializable]
     public class LevelProgress
     {
-        public int NoOfQuestions { get; }
+        public int NoOfQuestions { get; set; }
         public int NoOfCorrectAnswers { get; set; }
         public int NoOfWrongAnswers { get; set; }
 
