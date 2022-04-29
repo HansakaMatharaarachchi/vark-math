@@ -49,10 +49,10 @@ public class ClickBtn1 : Question
     public void CheckAnswerCorrect()
     {
 
-        evaluate.text = "wrong answer";
+        // evaluate.text = "wrong answer";
     }
     public void CheckAnswerRight()
     {
-        evaluate.text = "correct answer";
+        // evaluate.text = "correct answer";
     }
 }

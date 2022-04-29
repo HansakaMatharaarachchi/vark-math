@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace _Scripts
 {
@@ -17,8 +18,8 @@ namespace _Scripts
         public int Age { get; set; }
         public int GoldCoinAmount { get; set; } = 200;
         public int Level { get; set; } = 1;
-        public Level[] LevelStats { get; } = new Level[5];
-        public Inventory Inventory { get; } = new Inventory();
+        public Level[] LevelStats { get; set; } = new Level[5];
+        public Inventory Inventory { get; set; } = new Inventory();
         public LearningStyle LearningStyle { get; set; }
         public DateTime LastActiveDate { get; set; }
         public bool IsDailyRewardCollected { get; set; }

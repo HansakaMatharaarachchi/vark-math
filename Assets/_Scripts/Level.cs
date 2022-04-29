@@ -17,7 +17,7 @@ namespace _Scripts
         public Level(LevelProgress progress, bool isPassed)
         {
             LastAttemptProgress = progress;
-            this.IsPassed = isPassed;
+            IsPassed = isPassed;
         }
     }
 }
