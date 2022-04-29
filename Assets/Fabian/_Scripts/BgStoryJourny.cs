@@ -19,18 +19,18 @@ public class BgStoryJourny : MonoBehaviour
         // displays the equipped spaceShip
         if (spaceShipContainer.childCount > 0)
             Destroy(spaceShipContainer.GetChild(0).gameObject);
-        GameObject spaceShip = ((SpaceShipObject)GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedSpaceShipId())).journeyPrefab;
+        GameObject spaceShip = ((SpaceShipObject)GameManager.Instance.Store.GetItemBuyId(GameManager.Instance.Player.Inventory.GetEquippedSpaceShipId())).journeyPrefab;
         Instantiate(spaceShip, spaceShipContainer);
         
         // displays the equipped costume
         if (playerContainer.childCount > 0)
             Destroy(playerContainer.GetChild(0).gameObject);
-        GameObject character = ((CostumeObject)GameManager.Instance.store.GetItemBuyId(GameManager.Instance.player.inventory.GetEquippedCostumeId())).journeyPrefab;
+        GameObject character = ((CostumeObject)GameManager.Instance.Store.GetItemBuyId(GameManager.Instance.Player.Inventory.GetEquippedCostumeId())).journeyPrefab;
         Instantiate(character, playerContainer);
     }
     
     private void ChangeDestinationPlanet()
     {
-        destinationPlanet.GetComponent<MeshRenderer>().material = destinationPlanetMats[GameManager.Instance.currentLevel - 1];
+        destinationPlanet.GetComponent<MeshRenderer>().material = destinationPlanetMats[GameManager.Instance.CurrentLevel - 1];
     }
 }

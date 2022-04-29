@@ -15,11 +15,12 @@ public class FuelBar : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < GameManager.Instance.currentLevelProgress.noOfCorrectAnswers; i++)
+        for (int i = 0; i < GameManager.Instance.CurrentLevelProgress.NoOfCorrectAnswers; i++)
         {
             Fill();
         }
     }
+
     void Update()
     {
         lerpSpeed = 3f * Time.deltaTime;
@@ -38,13 +39,7 @@ public class FuelBar : MonoBehaviour
         fuelBar.color = healthColor;
     }
 
-    // public void Reduce()
-    // {
-    //     if (fuelAmount > 0)
-    //         fuelAmount -= maxFuelValue / 3;
-    // }
-
-    public void Fill()
+    private void Fill()
     {
         if (fuelAmount < maxFuelValue)
             fuelAmount += maxFuelValue / 3;

@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-    [SerializeField]private GameObject weaponContainer;
+    [SerializeField] private GameObject weaponContainer;
 
     [SerializeField] private bool isInLobby;
     [SerializeField] private bool isInStore;
-    
+
     private Animator characterAnimator;
+
     private void Start()
     {
         characterAnimator = GetComponent<Animator>();
@@ -24,14 +25,18 @@ public class PlayerCharacterController : MonoBehaviour
             InStore();
         }
     }
-    public void InLobby()
+
+    private void InLobby()
     {
         characterAnimator.SetTrigger("IsInLobby");
-        weaponContainer.transform.Find(GameManager.Instance.player.inventory.GetEquippedEquipmentId()).gameObject.SetActive(true);
+        weaponContainer.transform.Find(GameManager.Instance.Player.Inventory.GetEquippedEquipmentId()).gameObject
+            .SetActive(true);
     }
-    public void InStore()
+
+    private void InStore()
     {
         characterAnimator.SetTrigger("IsInStore");
-        weaponContainer.transform.Find(GameManager.Instance.player.inventory.GetEquippedEquipmentId()).gameObject.SetActive(true);
+        weaponContainer.transform.Find(GameManager.Instance.Player.Inventory.GetEquippedEquipmentId()).gameObject
+            .SetActive(true);
     }
 }

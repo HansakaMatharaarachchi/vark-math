@@ -76,7 +76,6 @@ namespace _Scripts.Firebase
             var signedIn = user != auth.CurrentUser && auth.CurrentUser != null;
             if (!signedIn && user != null)
             {
-                
                 GameManager.Instance.LoadScene(0);
                 Debug.Log("Signed out " + user.DisplayName);
             }

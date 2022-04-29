@@ -14,17 +14,16 @@ namespace _Scripts
 {
     public class GameManager : Singleton<GameManager>
     {
-        public Player player;
-        public Store store;
+        public Player Player { get; private set; }
+        public Store Store { get; private set; }
         private LevelManager levelManager;
         private FirebaseManager firebaseManager;
         private NotificationManager notificationManager;
-        public bool isSignedIn;
-
-        public int currentLevel;
-        public LevelProgress currentLevelProgress;
-        public int[] currentLevelQuestions;
-        public int currentQuestionIndex;
+        private bool IsSignedIn { get; set; }
+        public int CurrentLevel { get; private set; }
+        public LevelProgress CurrentLevelProgress { get; private set; }
+        public int[] CurrentLevelQuestions { get; private set; }
+        public int CurrentQuestionIndex { get; private set; }
 
         [SerializeField] private GameObject screenGuardWarningCanvas;
 
@@ -35,10 +34,10 @@ namespace _Scripts
             {
                 firebaseManager = await FirebaseManager.Start();
                 notificationManager = new NotificationManager();
-                store = new Store();
+                Store = new Store();
                 levelManager = new LevelManager();
-                isSignedIn = await firebaseManager.IsSignedInAsync();
-                if (isSignedIn)
+                IsSignedIn = await firebaseManager.IsSignedInAsync();
+                if (IsSignedIn)
                 {
                     Debug.Log("Signed In");
                     InitGame();
@@ -57,15 +56,15 @@ namespace _Scripts
 
         public async void InitGame()
         {
-            player = await firebaseManager.RetrieveUserDataAsync();
-            if (player.learningStyle != LearningStyle.NotSet)
+            Player = await firebaseManager.RetrieveUserDataAsync();
+            if (Player.LearningStyle != LearningStyle.NotSet)
             {
                 // resets daily stats for a new day
-                if (DateTime.Compare(DateTime.Now.Date, player.lastActiveDate) > 0)
+                if (DateTime.Compare(DateTime.Now.Date, Player.LastActiveDate) > 0)
                 {
-                    player.lastActiveDate = DateTime.Now.Date;
-                    player.lastActiveDatePlaytimeInSeconds = 0.0f;
-                    player.isDailyRewardCollected = false;
+                    Player.LastActiveDate = DateTime.Now.Date;
+                    Player.LastActiveDatePlaytimeInSeconds = 0.0f;
+                    Player.IsDailyRewardCollected = false;
                 }
 
                 StartScreenAddictionShieldAsync();
@@ -112,14 +111,14 @@ namespace _Scripts
         {
             try
             {
-                isSignedIn = await firebaseManager.SignInUserAsync(email, password);
+                IsSignedIn = await firebaseManager.SignInUserAsync(email, password);
             }
             catch (Exception e)
             {
                 return e.Message;
             }
 
-            if (isSignedIn)
+            if (IsSignedIn)
             {
                 InitGame();
             }
@@ -130,23 +129,23 @@ namespace _Scripts
         // saves playerData automatically if the user pause, minimize, quit the application
         private void OnApplicationPause(bool pauseStatus)
         {
-            if (isSignedIn)
+            if (IsSignedIn)
             {
-                firebaseManager.UploadPlayerData(player);
+                firebaseManager.UploadPlayerData(Player);
             }
         }
 
         private void OnApplicationFocus(bool hasFocus)
         {
-            if (!hasFocus && isSignedIn)
-                firebaseManager.UploadPlayerData(player);
+            if (!hasFocus && IsSignedIn)
+                firebaseManager.UploadPlayerData(Player);
         }
 
         private void OnApplicationQuit()
         {
-            if (isSignedIn)
+            if (IsSignedIn)
             {
-                firebaseManager.UploadPlayerData(player);
+                firebaseManager.UploadPlayerData(Player);
             }
         }
 
@@ -165,19 +164,19 @@ namespace _Scripts
         {
             try
             {
-                isSignedIn = await firebaseManager.SignUpUserAsync(email, password, studentName);
+                IsSignedIn = await firebaseManager.SignUpUserAsync(email, password, studentName);
 
-                store = new Store();
+                Store = new Store();
                 levelManager = new LevelManager();
 
-                player = new Player(studentName, studentAge);
+                Player = new Player(studentName, studentAge);
 
                 //add default items 
-                player.inventory.AddItem(store.Items["Costumes"][0]);
-                player.inventory.AddItem(store.Items["SpaceShips"][0]);
-                player.inventory.AddItem(store.Items["Equipments"][0]);
+                Player.Inventory.AddItem(Store.Items["Costumes"][0]);
+                Player.Inventory.AddItem(Store.Items["SpaceShips"][0]);
+                Player.Inventory.AddItem(Store.Items["Equipments"][0]);
 
-                firebaseManager.UploadPlayerData(player);
+                firebaseManager.UploadPlayerData(Player);
                 InitGame();
             }
             catch (Exception e)
@@ -206,17 +205,17 @@ namespace _Scripts
                 if (result.Value > maxValue.Value) maxValue = result;
             }
 
-            player.learningStyle = maxValue.Key;
-            firebaseManager.UploadPlayerData(player);
+            Player.LearningStyle = maxValue.Key;
+            firebaseManager.UploadPlayerData(Player);
             return maxValue.Key;
         }
 
         private async void StartScreenAddictionShieldAsync()
         {
-            while (player.lastActiveDatePlaytimeInSeconds <= 3600)
+            while (Player.LastActiveDatePlaytimeInSeconds <= 3600)
             {
                 await Task.Delay(TimeSpan.FromSeconds(1));
-                player.lastActiveDatePlaytimeInSeconds++;
+                Player.LastActiveDatePlaytimeInSeconds++;
             }
 
             Debug.Log("Daily Time REACHED");
@@ -245,41 +244,29 @@ namespace _Scripts
             return Task.CompletedTask;
         }
 
-        // public async Task MenuLoading(int i)
-        // {
-        //     var t= SceneManager.LoadSceneAsync(i);
-        //     while (!t.isDone)
-        //     {
-        //         float p = Mathf.Clamp01(t.progress / .9f);
-        //         loadingStatus.SetActive(true);
-        //         loadingStatus.GetComponent<Image>().fillAmount = p;
-        //         await Task.Yield();
-        //     }            
-        // }
-
         public void SignOut()
         {
-            firebaseManager.UploadPlayerData(player);
+            firebaseManager.UploadPlayerData(Player);
             FirebaseAuth.DefaultInstance.SignOut();
-            isSignedIn = false;
+            IsSignedIn = false;
         }
 
         public void PlayLevel(int level)
         {
-            currentLevel = level;
-            currentLevelQuestions = levelManager.GetQuestionsForALevel(level, player.learningStyle);
-            currentLevelProgress = new LevelProgress(currentLevelQuestions.Length);
-            currentQuestionIndex = 0;
+            CurrentLevel = level;
+            CurrentLevelQuestions = levelManager.GetQuestionsForALevel(level, Player.LearningStyle);
+            CurrentLevelProgress = new LevelProgress(CurrentLevelQuestions.Length);
+            CurrentQuestionIndex = 0;
             // loads the BG story - adventure
             LoadScene(5);
         }
 
         public void PlayQuestion(int index)
         {
-            if (index < currentLevelQuestions.Length)
+            if (index < CurrentLevelQuestions.Length)
             {
-                LoadScene(currentLevelQuestions[index]);
-                currentQuestionIndex = index;
+                LoadScene(CurrentLevelQuestions[index]);
+                CurrentQuestionIndex = index;
             }
             else
             {
@@ -291,49 +278,49 @@ namespace _Scripts
         public void SaveLastAttemptInCurrentLvl(bool hasPassed)
         {
             // checks if the player has already played the level
-            if (player.levelStats[currentLevel - 1].noOfAttempts > 0)
+            if (Player.LevelStats[CurrentLevel - 1].NoOfAttempts > 0)
             {
                 // checks if the player has already passed the current level
                 // means that the attempt is a retry after completing the level
-                if (player.levelStats[currentLevel - 1].isPassed)
+                if (Player.LevelStats[CurrentLevel - 1].IsPassed)
                 {
-                    player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
+                    Player.LevelStats[CurrentLevel - 1].LastAttemptProgress = CurrentLevelProgress;
                 }
                 else
                 {
                     if (hasPassed)
                     {
-                        player.level++;
-                        player.levelStats[currentLevel - 1].isPassed = true;
-                        player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
+                        Player.Level++;
+                        Player.LevelStats[CurrentLevel - 1].IsPassed = true;
+                        Player.LevelStats[CurrentLevel - 1].LastAttemptProgress = CurrentLevelProgress;
                     }
                     else
                     {
-                        player.levelStats[currentLevel - 1].isPassed = false;
-                        player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
+                        Player.LevelStats[CurrentLevel - 1].IsPassed = false;
+                        Player.LevelStats[CurrentLevel - 1].LastAttemptProgress = CurrentLevelProgress;
                     }
                 }
 
-                player.levelStats[currentLevel - 1].noOfAttempts++;
+                Player.LevelStats[CurrentLevel - 1].NoOfAttempts++;
             }
             // save results of the first time level attempt
             else
             {
-                player.levelStats[currentLevel - 1] = new Level(currentLevelProgress, hasPassed);
-                player.levelStats[currentLevel - 1].noOfAttempts++;
+                Player.LevelStats[CurrentLevel - 1] = new Level(CurrentLevelProgress, hasPassed);
+                Player.LevelStats[CurrentLevel - 1].NoOfAttempts++;
                 if (hasPassed)
                 {
-                    player.level++;
-                    player.GoldCoinAmount += 20;
+                    Player.Level++;
+                    Player.GoldCoinAmount += 20;
                 }
             }
         }
 
         public void CollectDailyReward()
         {
-            if (!player.isDailyRewardCollected)
+            if (!Player.IsDailyRewardCollected)
             {
-                player.CollectDailyReward(10);
+                Player.CollectDailyReward(10);
             }
         }
     }
