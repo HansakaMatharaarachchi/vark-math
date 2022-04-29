@@ -37,8 +37,9 @@ public class NotificationManager
         {
             Title = "Come back!!!",
             Text = "Space journey awaits for you, come lets explore",
-            FireTime = DateTime.Now.AddHours(2) // 2 hours
-            //todo trigger according to the playtime
+            FireTime = DateTime.Now.AddHours(2), // 2 hours
+            RepeatInterval = new TimeSpan(2, 0, 0)
+            //todo improvement - trigger according to the playtime
         };
 
         //schedule the notification to send

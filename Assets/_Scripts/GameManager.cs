@@ -57,7 +57,7 @@ namespace _Scripts
 
         public async void InitGame()
         {
-            player = await firebaseManager.RetrieveUserDataAsync(); 
+            player = await firebaseManager.RetrieveUserDataAsync();
             if (player.learningStyle != LearningStyle.NotSet)
             {
                 // resets daily stats for a new day
@@ -67,6 +67,7 @@ namespace _Scripts
                     player.lastActiveDatePlaytimeInSeconds = 0.0f;
                     player.isDailyRewardCollected = false;
                 }
+
                 StartScreenAddictionShieldAsync();
                 await LoadSceneAsync(1);
             }
@@ -106,7 +107,7 @@ namespace _Scripts
                 return false;
             }
         }
-        
+
         public async Task<string> SignInUser(string email, string password)
         {
             try
@@ -120,7 +121,6 @@ namespace _Scripts
 
             if (isSignedIn)
             {
-                
                 InitGame();
             }
 
@@ -205,6 +205,7 @@ namespace _Scripts
             {
                 if (result.Value > maxValue.Value) maxValue = result;
             }
+
             player.learningStyle = maxValue.Key;
             firebaseManager.UploadPlayerData(player);
             return maxValue.Key;
