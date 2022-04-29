@@ -9,22 +9,46 @@ EditorBuildSettings:
     path: Assets/_Scenes/Main.unity
     guid: 6bf262d0f4352445e81af275dd344125
   - enabled: 1
-    path: Assets/WorkingScenes/Quessioniare.unity
-    guid: c3da339eefcd6a04fb5014efa03f3c0e
-  - enabled: 1
     path: Assets/_Scenes/Lobby.unity
     guid: d0c735667090fcf8e82ec5862538044b
   - enabled: 1
     path: Assets/_Scenes/Store.unity
     guid: 51dda7454b664a2aa9cf84a93618c802
   - enabled: 1
-    path: Assets/Fabian/Scenes/Level-1/Visual/first_scean.unity
+    path: Assets/_Scenes/Report.unity
+    guid: c370d15cb01b20249ba15f88a9a15407
+  - enabled: 1
+    path: Assets/_Scenes/UserFeeback.unity
+    guid: f969fb9619fbf02a0b02973f91e138e0
+  - enabled: 1
+    path: Assets/_Scenes/BackgroundStory/SpaceJourney.unity
+    guid: 1c4d5ac654dd272e28c3368f67e95c97
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/ParentsQuestionnaire.unity
+    guid: 832405d54993cf1219df2f37e0989850
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/V-Introductory.unity
+    guid: e3d7e79b7e30eb443a84af6d90390983
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/Kinest-introductortygames/Kin1.unity
+    guid: d8411b385691659448647c2f055e4a1d
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/Kinest-introductortygames/Kin2.unity
+    guid: f569b074013614f4094cd29c22d3a80c
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/Kinest-introductortygames/Kin3.unity
+    guid: 2da82f3544078b94cb226678d4e4dbd6
+  - enabled: 1
+    path: Assets/_Scenes/LearningStyleDetection/A-Introductory.unity
+    guid: 9aa390042a4481f3685aaf740f5cba0b
+  - enabled: 1
+    path: Assets/_Scenes/Levels/1/Visual/Level_1_V1.unity
     guid: 0f829790aa0736a4ea48c89aedc9d3f0
   - enabled: 1
-    path: Assets/Fabian/Scenes/Level-1/Visual/second_scean.unity
+    path: Assets/_Scenes/Levels/1/Visual/Level_1_V2.unity
     guid: bb775ad11f03c4a4887c7e77e3d7f6fe
   - enabled: 1
-    path: Assets/Fabian/Scenes/Level-1/Visual/third_scean.unity
+    path: Assets/_Scenes/Levels/1/Visual/Level_1_V3.unity
     guid: 23dcc94ed0f82d2b994ccfe118b9cf16
   - enabled: 1
     path: Assets/Fabian/Scenes/Level-2/Addition_1.unity
@@ -44,12 +68,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Fabian/Scenes/Level-3/SubtractionVisual3.unity
     guid: 48d164f893fb6d040bf5395497f7c395
-  - enabled: 1
-    path: Assets/Fabian/Scenes/BG/spaceT1 1.unity
-    guid: 1c4d5ac654dd272e28c3368f67e95c97
-  - enabled: 1
-    path: Assets/Fabian/Scenes/parents feedback.unity
-    guid: c370d15cb01b20249ba15f88a9a15407
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f0356e91825cde408ce0c67276aec5e,
       type: 2}

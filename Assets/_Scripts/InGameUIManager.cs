@@ -20,6 +20,7 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text passedLevelInfoText;
     [SerializeField] private GameObject rewardContainer;
     [SerializeField] private GameObject unlockedItemsContainer;
+    [SerializeField] private GameObject unlockedItemsCatPreview;
 
 
     private void Start()
@@ -47,7 +48,8 @@ public class InGameUIManager : MonoBehaviour
         questionResultPanel.SetActive(true);
         if (state)
         {
-            if (GameManager.Instance.currentLevelProgress.noOfCorrectAnswers == GameManager.Instance.currentLevelQuestions.Length)
+            if (GameManager.Instance.currentLevelProgress.noOfCorrectAnswers ==
+                GameManager.Instance.currentLevelQuestions.Length)
             {
                 questionCorrectResultTxt.text = "All fuel tanks are collected";
                 nxtQBtnContainer.SetActive(false);
@@ -56,15 +58,18 @@ public class InGameUIManager : MonoBehaviour
                 ShowResultPanel(true);
                 return;
             }
+
             questionResultPanel.transform.GetChild(0).gameObject.SetActive(true);
         }
         else
         {
-            if (GameManager.Instance.currentLevelProgress.noOfWrongAnswers == GameManager.Instance.currentLevelQuestions.Length)
+            if (GameManager.Instance.currentLevelProgress.noOfWrongAnswers ==
+                GameManager.Instance.currentLevelQuestions.Length)
             {
                 ShowResultPanel(false);
                 return;
             }
+
             questionResultPanel.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
@@ -85,11 +90,35 @@ public class InGameUIManager : MonoBehaviour
         await Task.Delay(3000);
         rewardContainer.SetActive(false);
         unlockedItemsContainer.SetActive(true);
+        foreach (StoreItemObject[] itemObjects in GameManager.Instance.store.Items.Values)
+        {
+            foreach (StoreItemObject itemObject in itemObjects)
+            {
+                if (itemObject.levelToBeUnlocked == GameManager.Instance.currentLevel + 1)
+                {
+                    switch (itemObject.type)
+                    {
+                        case StoreItemType.Costume:
+                            unlockedItemsCatPreview.transform.GetChild(0).gameObject.SetActive(true);
+                            break;
+                        case StoreItemType.SpaceShip:
+                            unlockedItemsCatPreview.transform.GetChild(1).gameObject.SetActive(true);
+                            break;
+                        case StoreItemType.Equipment:
+                            unlockedItemsCatPreview.transform.GetChild(2).gameObject.SetActive(true);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                    break;
+                }
+            }
+        }
     }
 
     public void OpenStoreOnClick()
     {
-        GameManager.Instance.LoadScene(4);
+        GameManager.Instance.LoadScene(2);
     }
 
     public void PlayNextLvlOnClick()

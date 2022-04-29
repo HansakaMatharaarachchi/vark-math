@@ -15,7 +15,7 @@ MonoBehaviour:
   id: C_3
   name: Red
   type: 0
-  price: 75
+  price: 60
   prefab: {fileID: 1403093385490934530, guid: 479567aa0c6bc77179c82fbcf09d9b84, type: 3}
   levelToBeUnlocked: 3
   lobbyPrefab: {fileID: 2336884802499062969, guid: 533ff12d142eeb130a6b0abbf5459d29,

@@ -31,6 +31,6 @@ public class BgStoryJourny : MonoBehaviour
     
     private void ChangeDestinationPlanet()
     {
-        destinationPlanet.GetComponent<MeshRenderer>().material = destinationPlanetMats[GameManager.Instance.currentLevel];
+        destinationPlanet.GetComponent<MeshRenderer>().material = destinationPlanetMats[GameManager.Instance.currentLevel - 1];
     }
 }

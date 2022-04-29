@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClickBtn : MonoBehaviour
+public class ClickBtn : Question
 {
 
 
@@ -39,6 +39,11 @@ public class ClickBtn : MonoBehaviour
         answerBtnArr[1].onClick.AddListener(CheckAnswerRight);
         answerBtnArr[2].onClick.AddListener(CheckAnswerCorrect);
         answerBtnArr[3].onClick.AddListener(CheckAnswerCorrect);
+
+        answerBtnArr[0].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[3].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[2].onClick.AddListener(SetAnswerWrong);
+        answerBtnArr[1].onClick.AddListener(SetAnswerCorrect);
 
     }
     public void CheckAnswerCorrect()

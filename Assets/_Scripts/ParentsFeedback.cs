@@ -28,7 +28,10 @@ public class ParentsFeedback : MonoBehaviour
             }
         }
         learningStyle.text = GameManager.Instance.player.learningStyle.ToString();
-        ShowInfoForALevel(GameManager.Instance.player.level - 1); // loads info for last unlocked level
+        int lvlToLoadOnStart = GameManager.Instance.player.level - 1; // loads info for last unlocked level
+        if (GameManager.Instance.player.level - 1 == 0)
+            lvlToLoadOnStart = 1;
+        ShowInfoForALevel(lvlToLoadOnStart); 
     }
 
     public void ShowInfoForALevel(int level)
@@ -56,6 +59,6 @@ public class ParentsFeedback : MonoBehaviour
 
     public void BackToLobby()
     {
-        GameManager.Instance.LoadScene(2);
+        GameManager.Instance.LoadScene(1);
     }
 }

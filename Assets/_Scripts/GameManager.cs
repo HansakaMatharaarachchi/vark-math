@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using _Scripts.Firebase;
@@ -14,7 +16,7 @@ namespace _Scripts
     {
         public Player player;
         public Store store;
-        public LevelManager levelManager;
+        private LevelManager levelManager;
         private FirebaseManager firebaseManager;
         private NotificationManager notificationManager;
         public bool isSignedIn;
@@ -32,6 +34,9 @@ namespace _Scripts
             if (CheckForInternetConnection())
             {
                 firebaseManager = await FirebaseManager.Start();
+                notificationManager = new NotificationManager();
+                store = new Store();
+                levelManager = new LevelManager();
                 isSignedIn = await firebaseManager.IsSignedInAsync();
                 if (isSignedIn)
                 {
@@ -50,31 +55,30 @@ namespace _Scripts
             }
         }
 
-        private async void InitGame()
+        public async void InitGame()
         {
-            notificationManager = new NotificationManager();
-            store = new Store();
-            levelManager = new LevelManager();
-            player = await firebaseManager.RetrieveUserDataAsync();
-            if (player.learningStyle == 0)
+            player = await firebaseManager.RetrieveUserDataAsync(); 
+            if (player.learningStyle != LearningStyle.NotSet)
             {
-                player.learningStyle = FindLearningStyle();
+                // resets daily stats for a new day
+                if (DateTime.Compare(DateTime.Now.Date, player.lastActiveDate) > 0)
+                {
+                    player.lastActiveDate = DateTime.Now.Date;
+                    player.lastActiveDatePlaytimeInSeconds = 0.0f;
+                    player.isDailyRewardCollected = false;
+                }
+                StartScreenAddictionShieldAsync();
+                await LoadSceneAsync(1);
             }
-
-            // resets daily stats for a new day
-            if (DateTime.Compare(DateTime.Now.Date, player.lastActiveDate) > 0)
+            else
             {
-                player.lastActiveDate = DateTime.Now.Date;
-                player.lastActiveDatePlaytimeInSeconds = 0.0f;
-                player.isDailyRewardCollected = false;
+                PlayerPrefs.DeleteAll();
+                // load learning style detecting scenes
+                await LoadSceneAsync(6);
             }
-
-            StartScreenAddictionShieldAsync(); //todo fix when max === now
-            await LoadSceneAsync(2);
-            // await MenuLoading(2);
         }
 
-        
+
         //checks if the internet connectivity is available or not
         //https://stackoverflow.com/questions/2031824/what-is-the-best-way-to-check-for-internet-connectivity-using-net
         private static bool CheckForInternetConnection(int timeoutMs = 10000, string url = null)
@@ -102,9 +106,7 @@ namespace _Scripts
                 return false;
             }
         }
-
-
-
+        
         public async Task<string> SignInUser(string email, string password)
         {
             try
@@ -118,6 +120,7 @@ namespace _Scripts
 
             if (isSignedIn)
             {
+                
                 InitGame();
             }
 
@@ -168,6 +171,8 @@ namespace _Scripts
                 levelManager = new LevelManager();
 
                 player = new Player(studentName, studentAge);
+
+                //add default items 
                 player.inventory.AddItem(store.Items["Costumes"][0]);
                 player.inventory.AddItem(store.Items["SpaceShips"][0]);
                 player.inventory.AddItem(store.Items["Equipments"][0]);
@@ -184,10 +189,25 @@ namespace _Scripts
         }
 
 
-        private LearningStyle FindLearningStyle()
+        public LearningStyle FindLearningStyle()
         {
-            return LearningStyle.Visual;
-            //Todo find learning style logic should be here 
+            var results =
+                new Dictionary<LearningStyle, float>
+                {
+                    [LearningStyle.Visual] = (PlayerPrefs.GetFloat("PV") + PlayerPrefs.GetFloat("CV")) / 2,
+                    [LearningStyle.Auditory] = (PlayerPrefs.GetFloat("PA") + PlayerPrefs.GetFloat("CA")) / 2,
+                    [LearningStyle.Kinesthetic] = (PlayerPrefs.GetFloat("PK") + PlayerPrefs.GetFloat("CK")) / 2
+                };
+            KeyValuePair<LearningStyle, float> maxValue = results.First();
+
+            // finds which result has the best score
+            foreach (KeyValuePair<LearningStyle, float> result in results)
+            {
+                if (result.Value > maxValue.Value) maxValue = result;
+            }
+            player.learningStyle = maxValue.Key;
+            firebaseManager.UploadPlayerData(player);
+            return maxValue.Key;
         }
 
         private async void StartScreenAddictionShieldAsync()
@@ -211,6 +231,11 @@ namespace _Scripts
         public void LoadScene(int index)
         {
             SceneManager.LoadScene(index);
+        }
+
+        public void LoadNextScene()
+        {
+            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         public Task LoadSceneAsync(int index)
@@ -245,7 +270,7 @@ namespace _Scripts
             currentLevelProgress = new LevelProgress(currentLevelQuestions.Length);
             currentQuestionIndex = 0;
             // loads the BG story - adventure
-            LoadScene(13);
+            LoadScene(5);
         }
 
         public void PlayQuestion(int index)
@@ -287,18 +312,18 @@ namespace _Scripts
                         player.levelStats[currentLevel - 1].lastAttemptProgress = currentLevelProgress;
                     }
                 }
-                player.levelStats[currentLevel - 1].noOfAttempts ++;
+
+                player.levelStats[currentLevel - 1].noOfAttempts++;
             }
             // save results of the first time level attempt
             else
             {
                 player.levelStats[currentLevel - 1] = new Level(currentLevelProgress, hasPassed);
-                player.levelStats[currentLevel - 1].noOfAttempts ++;
+                player.levelStats[currentLevel - 1].noOfAttempts++;
                 if (hasPassed)
                 {
                     player.level++;
                     player.GoldCoinAmount += 20;
-                    
                 }
             }
         }

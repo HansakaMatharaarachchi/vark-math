@@ -3822,35 +3822,30 @@ MonoBehaviour:
       noOfAttempts: 0
       lastAttemptProgress:
         noOfQuestions: 3
-        noOfAttempts: 0
         noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
         noOfQuestions: 3
-        noOfAttempts: 0
         noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
         noOfQuestions: 3
-        noOfAttempts: 0
         noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
         noOfQuestions: 3
-        noOfAttempts: 0
         noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     - isPassed: 0
       noOfAttempts: 0
       lastAttemptProgress:
         noOfQuestions: 3
-        noOfAttempts: 0
         noOfCorrectAnswers: 0
         noOfWrongAnswers: 0
     learningStyle: 0
@@ -3860,7 +3855,6 @@ MonoBehaviour:
   currentLevel: 0
   currentLevelProgress:
     noOfQuestions: 3
-    noOfAttempts: 0
     noOfCorrectAnswers: 0
     noOfWrongAnswers: 0
   currentLevelQuestions: 
@@ -8605,7 +8599,6 @@ RectTransform:
   - {fileID: 956864221}
   - {fileID: 788333386}
   - {fileID: 595547804}
-  - {fileID: 639964718899257874}
   - {fileID: 438800322}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -8615,94 +8608,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!224 &639964718899257874
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639964718899257875}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.3500004, y: 1.5, z: 1.5}
-  m_Children: []
-  m_Father: {fileID: 2105370355}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 98.6}
-  m_SizeDelta: {x: 100, y: 22.0575}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &639964718899257875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 639964718899257874}
-  - component: {fileID: 639964718899257876}
-  - component: {fileID: 639964718899257877}
-  - component: {fileID: 639964718899257878}
-  m_Layer: 5
-  m_Name: loadingBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!222 &639964718899257876
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639964718899257875}
-  m_CullTransparentMesh: 1
---- !u!114 &639964718899257877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639964718899257875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300062, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 0
-  m_FillAmount: 0
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &639964718899257878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639964718899257875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a1cd431c3e236459fed985edf1fec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1851022140001729808
 Transform:
   m_ObjectHideFlags: 0

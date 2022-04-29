@@ -10,7 +10,6 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] private TMP_Text userLevel;
     [SerializeField] private TMP_Text userName;
     [SerializeField] private TMP_Text goldCoinAmount;
-    [SerializeField] private TMP_Text soilSampleAmount; // todo remove
     [SerializeField] private Transform playerContainer;
     [SerializeField] private Transform spaceShipContainer;
     [SerializeField] private Button[] levelChoices;
@@ -86,12 +85,16 @@ public class LobbyManager : MonoBehaviour
 
     public void OpenStore()
     {
-        GameManager.Instance.LoadScene(3);
+        GameManager.Instance.LoadScene(2);
     }
 
-    public void OpenParentsFeedback()
+    public void OpenReport()
     {
-        GameManager.Instance.LoadScene(14);
+        GameManager.Instance.LoadScene(3);
+    }
+    public void OpenRateUs()
+    {
+        GameManager.Instance.LoadScene(4);
     }
     
     public void DisplayLevelSelection()
