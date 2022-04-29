@@ -42,7 +42,7 @@ public class StoreManager : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.LoadScene(2);
+            GameManager.Instance.LoadScene(1);
         }
     }
 

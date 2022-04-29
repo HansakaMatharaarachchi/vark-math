@@ -85,16 +85,16 @@ public class LobbyManager : MonoBehaviour
 
     public void OpenStore()
     {
-        GameManager.Instance.LoadScene(3);
+        GameManager.Instance.LoadScene(2);
     }
 
     public void OpenReport()
     {
-        GameManager.Instance.LoadScene(13);
+        GameManager.Instance.LoadScene(3);
     }
     public void OpenRateUs()
     {
-        GameManager.Instance.LoadScene(14);
+        GameManager.Instance.LoadScene(4);
     }
     
     public void DisplayLevelSelection()

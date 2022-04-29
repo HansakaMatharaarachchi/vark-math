@@ -18,7 +18,7 @@ MonoBehaviour:
   price: 60
   prefab: {fileID: 3850075257148094301, guid: 464650d42d03d537eb23a3211e2a7e2b, type: 3}
   levelToBeUnlocked: 2
-  lobbyPrefab: {fileID: 4536765331318350916, guid: 727b3d273823d8005b2659a740fc2517,
+  lobbyPrefab: {fileID: 1591405020536884890, guid: e0df8646efbc5bdb680f6688fb3f49c3,
     type: 3}
   journeyPrefab: {fileID: 3855435204503805661, guid: 10793b4ae46db834890b2ef2a290f547,
     type: 3}
