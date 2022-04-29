@@ -51,6 +51,24 @@ EditorBuildSettings:
     path: Assets/_Scenes/Levels/1/Visual/Level_1_V3.unity
     guid: 23dcc94ed0f82d2b994ccfe118b9cf16
   - enabled: 1
+    path: Assets/_Scenes/Levels/1/Auditory/w-audio-counting.unity
+    guid: 43a51ad866e5ba64da01df7dc4ebb00e
+  - enabled: 1
+    path: Assets/_Scenes/Levels/1/Auditory/w-audio-counting3.unity
+    guid: 8cb5fcbf001d2ec4f83255ec55a572a6
+  - enabled: 1
+    path: Assets/_Scenes/Levels/1/Auditory/w-couniting-audio-2.unity
+    guid: cf527b6f450bc0f4eaa812e5a85d3507
+  - enabled: 1
+    path: Assets/_Scenes/Levels/1/Kinesthetic/count2 Kin.unity
+    guid: 64a829533c220604ca69c00140edaf37
+  - enabled: 1
+    path: Assets/_Scenes/Levels/1/Kinesthetic/tigerscnene-working 1.unity
+    guid: 7689d5b401c672c47992b03b768ea88d
+  - enabled: 1
+    path: Assets/_Scenes/Levels/1/Kinesthetic/w-counting-flowers.unity
+    guid: 16a955b3bfc9e62479bd5bef4e0fabc7
+  - enabled: 1
     path: Assets/Fabian/Scenes/Level-2/Addition_1.unity
     guid: c14eb2b87376b534cb6d4700cb9bb794
   - enabled: 1

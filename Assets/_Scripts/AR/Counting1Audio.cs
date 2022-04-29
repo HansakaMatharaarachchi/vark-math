@@ -6,7 +6,7 @@ using _Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Counting1Audio : MonoBehaviour
+public class Counting1Audio : Question
 {
 
 
@@ -43,16 +43,13 @@ public class Counting1Audio : MonoBehaviour
     }
     public void CheckAnswerCorrect()
     {
-        // GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddWrongAnswer();
         evaluate.text = "wrong answer";
-        // GameManager.Instance.PlayNextQuestion();
-
+        SetAnswerWrong();
     }
     public void CheckAnswerRight()
     {
         evaluate.text = "correct answer";
-        // GameManager.Instance.player.levelsProgresses[GameManager.Instance.player.levelsProgresses.Count - 1].AddCorrectAnswer();
-        // GameManager.Instance.PlayNextQuestion();
+        SetAnswerCorrect();
     }
 }
 
