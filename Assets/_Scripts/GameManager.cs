@@ -16,7 +16,7 @@ namespace _Scripts
     {
         public Player player;
         public Store store;
-        public LevelManager levelManager;
+        private LevelManager levelManager;
         private FirebaseManager firebaseManager;
         private NotificationManager notificationManager;
         public bool isSignedIn;
@@ -72,8 +72,9 @@ namespace _Scripts
             }
             else
             {
-                // load detecting scenes
-                await LoadSceneAsync(14);
+                PlayerPrefs.DeleteAll();
+                // load learning style detecting scenes
+                await LoadSceneAsync(6);
             }
         }
 
@@ -195,9 +196,7 @@ namespace _Scripts
                 {
                     [LearningStyle.Visual] = (PlayerPrefs.GetFloat("PV") + PlayerPrefs.GetFloat("CV")) / 2,
                     [LearningStyle.Auditory] = (PlayerPrefs.GetFloat("PA") + PlayerPrefs.GetFloat("CA")) / 2,
-                    // [LearningStyle.Kinesthetic] = (PlayerPrefs.GetFloat("PK") + PlayerPrefs.GetFloat("CK")) / 2
-                    [LearningStyle.Kinesthetic] = 0.2f
-
+                    [LearningStyle.Kinesthetic] = (PlayerPrefs.GetFloat("PK") + PlayerPrefs.GetFloat("CK")) / 2
                 };
             KeyValuePair<LearningStyle, float> maxValue = results.First();
 
@@ -271,7 +270,7 @@ namespace _Scripts
             currentLevelProgress = new LevelProgress(currentLevelQuestions.Length);
             currentQuestionIndex = 0;
             // loads the BG story - adventure
-            LoadScene(12);
+            LoadScene(5);
         }
 
         public void PlayQuestion(int index)

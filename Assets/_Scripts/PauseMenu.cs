@@ -29,6 +29,6 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitLevel()
     {
-        GameManager.Instance.LoadScene(2);
+        GameManager.Instance.LoadScene(1);
     }
 }

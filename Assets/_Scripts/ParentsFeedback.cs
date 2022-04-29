@@ -59,6 +59,6 @@ public class ParentsFeedback : MonoBehaviour
 
     public void BackToLobby()
     {
-        GameManager.Instance.LoadScene(2);
+        GameManager.Instance.LoadScene(1);
     }
 }

@@ -118,7 +118,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void OpenStoreOnClick()
     {
-        GameManager.Instance.LoadScene(4);
+        GameManager.Instance.LoadScene(2);
     }
 
     public void PlayNextLvlOnClick()
