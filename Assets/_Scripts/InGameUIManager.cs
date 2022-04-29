@@ -133,6 +133,6 @@ public class InGameUIManager : MonoBehaviour
 
     public void LoadLobbyOnClick()
     {
-        GameManager.Instance.LoadScene(3);
+        GameManager.Instance.LoadScene(1);
     }
 }
