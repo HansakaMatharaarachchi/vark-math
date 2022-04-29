@@ -27,7 +27,7 @@ public class StoreManager : MonoBehaviour
 
     private void Update()
     {
-        goldCoinAmount.text = GameManager.Instance.player.GoldCoinAmount.ToString();
+        goldCoinAmount.text = GameManager.Instance.Player.GoldCoinAmount.ToString();
     }
 
     public void ChangePanels()
@@ -51,7 +51,7 @@ public class StoreManager : MonoBehaviour
         inSelectedItemCategory = true;
         categoryMenu.SetActive(false);
         buyMenu.SetActive(true);
-        selectedItemCategory = GameManager.Instance.store.Items[categoryName];
+        selectedItemCategory = GameManager.Instance.Store.Items[categoryName];
         ChangeItem(0);
     }
     public void ChangeItem(int change)
@@ -77,17 +77,17 @@ public class StoreManager : MonoBehaviour
         itemName.text = itemObject.name;
 
         //checks if the player has the required level to purchase the item 
-        if (itemObject.levelToBeUnlocked <= GameManager.Instance.player.level)
+        if (itemObject.levelToBeUnlocked <= GameManager.Instance.Player.Level)
         {
             //checks if the player already has the item
-            if (GameManager.Instance.player.inventory.IsItemOwned(itemObject))
+            if (GameManager.Instance.Player.Inventory.IsItemOwned(itemObject))
             {
                 purchaseItemButton.gameObject.SetActive(false);
                 equipItemButton.gameObject.SetActive(true);
-                equipItemButton.interactable = GameManager.Instance.player.inventory.Items[itemObject.type + "s"].Count != 1;
+                equipItemButton.interactable = GameManager.Instance.Player.Inventory.Items[itemObject.type + "s"].Count != 1;
                 
                 //checks if the item is equipped by the player
-                if (GameManager.Instance.player.inventory.GetEquippedItemIdForAType(itemObject.type) == itemObject.id)
+                if (GameManager.Instance.Player.Inventory.GetEquippedItemIdForAType(itemObject.type) == itemObject.id)
                 {
                     equipItemButton.GetComponentInChildren<Text>().text = "EQUIPPED";
                     equipItemButton.interactable = false;
@@ -100,7 +100,7 @@ public class StoreManager : MonoBehaviour
             else
             {
                 //checks if the player has the required gold coin amount
-                if (itemObject.price > GameManager.Instance.player.GoldCoinAmount)
+                if (itemObject.price > GameManager.Instance.Player.GoldCoinAmount)
                 {
                     purchaseItemButton.interactable = false;
                     return;
@@ -121,7 +121,7 @@ public class StoreManager : MonoBehaviour
     
     public void BuyItemOnclick()
     {
-        GameManager.Instance.player.BuyItem(selectedItemCategory[selectedIndex]);
+        GameManager.Instance.Player.BuyItem(selectedItemCategory[selectedIndex]);
         // purchaseItemButton.interactable = false;
         purchaseItemButton.gameObject.SetActive(false);
         equipItemButton.gameObject.SetActive(true);
@@ -130,7 +130,7 @@ public class StoreManager : MonoBehaviour
 
     public void EquipItemOnClick()
     {
-        GameManager.Instance.player.EquipItem(selectedItemCategory[selectedIndex]);
+        GameManager.Instance.Player.EquipItem(selectedItemCategory[selectedIndex]);
         equipItemButton.GetComponentInChildren<Text>().text = "EQUIPPED";
         equipItemButton.interactable = false;
     }

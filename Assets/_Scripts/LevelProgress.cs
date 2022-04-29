@@ -1,27 +1,30 @@
-[System.Serializable]
-public class LevelProgress
+namespace _Scripts
 {
-    public int noOfQuestions;
-    public int noOfCorrectAnswers;
-    public int noOfWrongAnswers;
-
-    public LevelProgress(int noOfQuestions)
+    [System.Serializable]
+    public class LevelProgress
     {
-        this.noOfQuestions = noOfQuestions;
-    }
+        public int NoOfQuestions { get; }
+        public int NoOfCorrectAnswers { get; set; }
+        public int NoOfWrongAnswers { get; set; }
 
-    public bool IsLevelPassed()
-    {
-        return noOfCorrectAnswers == noOfQuestions;
-    }
-
-    public int CalculateLevelProgress()
-    {
-        if (!IsLevelPassed())
+        public LevelProgress(int noOfQuestions)
         {
-            return noOfCorrectAnswers / noOfQuestions * 100;
+            this.NoOfQuestions = noOfQuestions;
         }
 
-        return 100 - noOfWrongAnswers * 15;
+        public bool IsLevelPassed()
+        {
+            return NoOfCorrectAnswers == NoOfQuestions;
+        }
+
+        public int CalculateLevelProgress()
+        {
+            if (!IsLevelPassed())
+            {
+                return NoOfCorrectAnswers / NoOfQuestions * 100;
+            }
+
+            return 100 - NoOfWrongAnswers * 15;
+        }
     }
 }

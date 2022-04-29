@@ -12,9 +12,9 @@ public abstract class Question : MonoBehaviour
 
     protected virtual void SetAnswerCorrect()
     {
-        GameManager.Instance.currentLevelProgress.noOfCorrectAnswers++;
-        if (GameManager.Instance.currentLevelProgress.noOfCorrectAnswers ==
-            GameManager.Instance.currentLevelQuestions.Length)
+        GameManager.Instance.CurrentLevelProgress.NoOfCorrectAnswers++;
+        if (GameManager.Instance.CurrentLevelProgress.NoOfCorrectAnswers ==
+            GameManager.Instance.CurrentLevelQuestions.Length)
         {
             GameManager.Instance.SaveLastAttemptInCurrentLvl(true);
         }
@@ -24,9 +24,9 @@ public abstract class Question : MonoBehaviour
 
     protected virtual void SetAnswerWrong()
     {
-        GameManager.Instance.currentLevelProgress.noOfWrongAnswers++;
-        if (GameManager.Instance.currentLevelProgress.noOfWrongAnswers ==
-            GameManager.Instance.currentLevelQuestions.Length)
+        GameManager.Instance.CurrentLevelProgress.NoOfWrongAnswers++;
+        if (GameManager.Instance.CurrentLevelProgress.NoOfWrongAnswers ==
+            GameManager.Instance.CurrentLevelQuestions.Length)
         {
             GameManager.Instance.SaveLastAttemptInCurrentLvl(false);
         }

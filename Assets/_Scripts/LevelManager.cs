@@ -4,7 +4,7 @@ namespace _Scripts
 {
     public class LevelManager
     {
-        public Dictionary<int, Dictionary<LearningStyle, int[]>> levels =
+        private readonly Dictionary<int, Dictionary<LearningStyle, int[]>> levels =
             new Dictionary<int, Dictionary<LearningStyle, int[]>>();
 
         public LevelManager()
