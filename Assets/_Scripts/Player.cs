@@ -26,6 +26,10 @@ namespace _Scripts
 
         public Player()
         {
+            for (int i = 0; i < LevelStats.Length; i++)
+            {
+                LevelStats[i] = new Level();
+            }
         }
 
         public Player(string name, int age)
@@ -34,10 +38,10 @@ namespace _Scripts
             Age = age;
             LastActiveDate = DateTime.Now.Date;
             LastActiveDatePlaytimeInSeconds = 0.0f;
-            // for (int i = 0; i < LevelStats.Length; i++)
-            // {
-            //     LevelStats[i] = new Level();
-            // }
+            for (int i = 0; i < LevelStats.Length; i++)
+            {
+                LevelStats[i] = new Level();
+            }
         }
 
         public void BuyItem(StoreItemObject storeItemObject)
