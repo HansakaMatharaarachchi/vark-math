@@ -43,13 +43,13 @@ public class ClickBtn2 : MonoBehaviour {
 
         evaluate.text = "wrong answer";
     GameManager.Instance.LoadNextScene();
-    PlayerPrefs.SetFloat("CK", 0);
+    PlayerPrefs.SetFloat("CK", 0.0f);
     GameManager.Instance.LoadNextScene();
 }
     public void CheckAnswerRight()
     {
         evaluate.text = "correct answer";
-        PlayerPrefs.SetFloat("CK", 1);
+        PlayerPrefs.SetFloat("CK", 1.0f);
         PlayerPrefs.Save();
         GameManager.Instance.LoadNextScene();
     }

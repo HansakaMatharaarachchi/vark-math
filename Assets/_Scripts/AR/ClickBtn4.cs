@@ -47,7 +47,7 @@ public class ClickBtn4 : MonoBehaviour
     public void CheckAnswerRight()
     {
         evaluate.text = "correct answer";
-        PlayerPrefs.SetFloat("CK", (PlayerPrefs.GetFloat("CK") + 1));
+        PlayerPrefs.SetFloat("CK", (float) (PlayerPrefs.GetFloat("CK") + 1.0));
         PlayerPrefs.Save();
         GameManager.Instance.LoadNextScene();
     }
