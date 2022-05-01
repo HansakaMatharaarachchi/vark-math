@@ -5,11 +5,8 @@ namespace _Scripts
 {
     public class PauseMenu : MonoBehaviour
     {
-        [SerializeField] private Button settingsBtn;
-        [SerializeField] private Button exitBtn;
-
         // triggers on opening pause menu
-        public void OnEnable()
+        private void OnEnable()
         {
             Time.timeScale = 0f;
         }
@@ -22,7 +19,7 @@ namespace _Scripts
 
         public void OpenSettings()
         {
-            //todo assign
+            GameManager.Instance.OpenSettings();
         }
 
         public void ExitLevel()
