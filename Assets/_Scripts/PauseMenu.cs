@@ -1,34 +1,50 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using _Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour
+namespace _Scripts
 {
-    [SerializeField] private Button settingsBtn;
-    [SerializeField] private Button exitBtn;
+    public class PauseMenu : MonoBehaviour
+    {
+        // triggers on opening pause menu
+        private void OnEnable()
+        {
+            Time.timeScale = 0f;
+            GameManager.Instance.AudioManager.PauseAudio(true);
+            // pause animations
+            Animator[] allAnims = FindObjectsOfType<Animator>(true);
+            if (allAnims.Length != 0)
+            {
+                foreach( var anim in allAnims )
+                {
+                    anim.speed = 0;
+                }
+            }
+        }
 
-    // triggers on opening pause menu
-    public void OnEnable()
-    {
-        Time.timeScale = 0f;
-    }
-    
-    //triggers on closing pause menu
-    private void OnDisable()
-    {
-        Time.timeScale = 1f;
-    }
+        //triggers on closing pause menu
+        private void OnDisable()
+        {
+            Time.timeScale = 1f;
+            GameManager.Instance.AudioManager.PauseAudio(false);
+            // resume animations
+            Animator[] allAnims = FindObjectsOfType<Animator>(true);
+            if (allAnims.Length != 0)
+            {
+                foreach( var anim in allAnims )
+                {
+                    anim.speed = 1;
+                }
+            }
+        }
 
-    public void OpenSettings()
-    {
-        
-    }
+        public void OpenSettings()
+        {
+            GameManager.Instance.OpenSettings();
+        }
 
-    public void ExitLevel()
-    {
-        GameManager.Instance.LoadScene(1);
+        public void ExitLevel()
+        {
+            GameManager.Instance.LoadScene(1);
+        }
     }
 }

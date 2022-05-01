@@ -10,6 +10,7 @@ TagManager:
   - E_3
   - HUD
   - Canvas
+  - SignedInSettings
   layers:
   - Default
   - TransparentFX

@@ -16,27 +16,31 @@ namespace _Scripts
         public string Name { get; set; }
         public int Age { get; set; }
         public int GoldCoinAmount { get; set; } = 200;
-        public int level = 1;
-        public Level[] levelStats = new Level[5];
-        public Inventory inventory = new Inventory();
-        public LearningStyle learningStyle;
-        public DateTime lastActiveDate;
-        public bool isDailyRewardCollected;
-        public float lastActiveDatePlaytimeInSeconds;
+        public int Level { get; set; } = 1;
+        public Level[] LevelStats { get; set; } = new Level[5];
+        public Inventory Inventory { get; set; } = new Inventory();
+        public LearningStyle LearningStyle { get; set; }
+        public DateTime LastActiveDate { get; set; }
+        public bool IsDailyRewardCollected { get; set; }
+        public float LastActiveDatePlaytimeInSeconds { get; set; }
 
         public Player()
         {
+            for (int i = 0; i < LevelStats.Length; i++)
+            {
+                LevelStats[i] = new Level();
+            }
         }
 
         public Player(string name, int age)
         {
             Name = name;
             Age = age;
-            lastActiveDate = DateTime.Now.Date;
-            lastActiveDatePlaytimeInSeconds = 0.0f;
-            for (int i = 0; i < levelStats.Length; i++)
+            LastActiveDate = DateTime.Now.Date;
+            LastActiveDatePlaytimeInSeconds = 0.0f;
+            for (int i = 0; i < LevelStats.Length; i++)
             {
-                levelStats[i] = new Level();
+                LevelStats[i] = new Level();
             }
         }
 
@@ -44,17 +48,17 @@ namespace _Scripts
         {
             if (GoldCoinAmount < storeItemObject.price) return;
             GoldCoinAmount -= storeItemObject.price;
-            inventory.AddItem(storeItemObject);
+            Inventory.AddItem(storeItemObject);
         }
 
         public void EquipItem(StoreItemObject storeItemObject)
         {
-            inventory.SetEquippedItem(storeItemObject);
+            Inventory.SetEquippedItem(storeItemObject);
         }
 
         public void CollectDailyReward(int amount)
         {
-            isDailyRewardCollected = true;
+            IsDailyRewardCollected = true;
             GoldCoinAmount += amount;
         }
     }
