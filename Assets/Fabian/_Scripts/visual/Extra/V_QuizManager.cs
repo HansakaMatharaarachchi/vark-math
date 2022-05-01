@@ -13,7 +13,7 @@ public class V_QuizManager : MonoBehaviour
     public int currentQuestion;
     public GameObject[] assets;
 
-    public TMP_Text QuestionTxt;
+    public TMP_Text questionTxt;
 
     private void Start()
     {
@@ -52,7 +52,7 @@ public class V_QuizManager : MonoBehaviour
         if (QnA.Count > 0)
         {
             assets[currentQuestion].SetActive(true);
-            QuestionTxt.text = QnA[currentQuestion].Questions;
+            questionTxt.text = QnA[currentQuestion].Questions;
             SetAnswers();
             currentQuestion++;
         }

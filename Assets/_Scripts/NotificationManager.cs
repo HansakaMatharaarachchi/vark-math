@@ -32,6 +32,7 @@ namespace _Scripts
                 Title = "Hey!!! Daily Rewards Are Now Available",
                 Text = "collect daily rewards",
                 FireTime = DateTime.Today.AddDays(1), // 1 day
+                RepeatInterval = new TimeSpan(1 , 0, 0,0)
             };
 
             //creates a notification for Play Reminder

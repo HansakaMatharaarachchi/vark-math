@@ -18,6 +18,7 @@ namespace _Scripts
         public Store Store { get; private set; }
         private LevelManager levelManager;
         private FirebaseManager firebaseManager;
+        public AudioManager AudioManager { get; private set; }
         private NotificationManager notificationManager;
         public bool IsSignedIn { get; private set; }
         public int CurrentLevel { get; private set; }
@@ -38,6 +39,7 @@ namespace _Scripts
                 notificationManager = new NotificationManager();
                 Store = new Store();
                 levelManager = new LevelManager();
+                AudioManager = new AudioManager();
                 IsSignedIn = await firebaseManager.IsSignedInAsync();
                 if (IsSignedIn)
                 {
@@ -74,12 +76,19 @@ namespace _Scripts
             }
             else
             {
-                PlayerPrefs.DeleteAll();
+                //delete saved values for learning style detection
+                PlayerPrefs.DeleteKey("PV");
+                PlayerPrefs.DeleteKey("PA");
+                PlayerPrefs.DeleteKey("PK");
+                
+                PlayerPrefs.DeleteKey("CV");
+                PlayerPrefs.DeleteKey("CA");
+                PlayerPrefs.DeleteKey("CK");
+
                 // load learning style detecting scenes
                 await LoadSceneAsync(6);
             }
         }
-
 
         //checks if the internet connectivity is available or not
         //https://stackoverflow.com/questions/2031824/what-is-the-best-way-to-check-for-internet-connectivity-using-net

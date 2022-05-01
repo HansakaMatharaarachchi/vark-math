@@ -1,18 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+namespace _Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class AudioManager
     {
-        
-    }
+        public AudioManager()
+        {
+            if (!PlayerPrefs.HasKey("musicVolume"))
+            {
+                PlayerPrefs.SetFloat("musicVolume", 0.80f);
+                Load();
+            }
+            else
+            {
+                Load();
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void ChangeVolume(float value)
+        {
+            AudioListener.volume = value;
+            Save(value);
+        }
+
+        public float GetVolume()
+        {
+            return PlayerPrefs.GetFloat("musicVolume");
+        }
+
+        private void Load()
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("musicVolume");
+        }
+
+        private void Save(float value)
+        {
+            PlayerPrefs.SetFloat("musicVolume", value);
+        }
+
+        public void PauseAudio(bool state)
+        {
+            AudioListener.pause = state;
+        }
     }
 }
