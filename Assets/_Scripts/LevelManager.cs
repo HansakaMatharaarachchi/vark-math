@@ -4,8 +4,7 @@ namespace _Scripts
 {
     public class LevelManager
     {
-        private readonly Dictionary<int, Dictionary<LearningStyle, int[]>> levels =
-            new Dictionary<int, Dictionary<LearningStyle, int[]>>();
+        private readonly Dictionary<int, Dictionary<LearningStyle, int[]>> levels = new Dictionary<int, Dictionary<LearningStyle, int[]>>();
 
         public LevelManager()
         {
@@ -17,7 +16,7 @@ namespace _Scripts
             });
             levels.Add(2, new Dictionary<LearningStyle, int[]>
             {
-                {LearningStyle.Visual, new[] {15, 16, 17}},
+                {LearningStyle.Visual, new[] {21, 22, 23}},
                 {LearningStyle.Auditory, new[] {7, 8, 9}},
                 {LearningStyle.Kinesthetic, new[] {7, 8, 9}},
             });

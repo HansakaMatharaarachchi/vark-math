@@ -666,7 +666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -200.20021}
+  m_AnchoredPosition: {x: 100, y: -199.75397}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148529896
@@ -1367,7 +1367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 499.99997, y: -200.20021}
+  m_AnchoredPosition: {x: 499.99997, y: -199.75397}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &414876733
@@ -1415,7 +1415,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1626213237}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: LobbyManager, Scripts
         m_MethodName: StartLevel
         m_Mode: 3
         m_Arguments:
@@ -1501,7 +1501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 299.99997, y: -200.20021}
+  m_AnchoredPosition: {x: 299.99997, y: -199.75397}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419356490
@@ -1549,7 +1549,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1626213237}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: LobbyManager, Scripts
         m_MethodName: StartLevel
         m_Mode: 3
         m_Arguments:
@@ -1559,7 +1559,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!114 &419356491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1785,7 +1785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 699.99994, y: -200.20021}
+  m_AnchoredPosition: {x: 699.99994, y: -199.75397}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520844701
@@ -1833,7 +1833,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1626213237}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: LobbyManager, Scripts
         m_MethodName: StartLevel
         m_Mode: 3
         m_Arguments:
@@ -1843,7 +1843,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!114 &520844702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4559,8 +4559,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1626213237}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: Logout
+        m_TargetAssemblyTypeName: LobbyManager, Scripts
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5140,7 +5140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.4310677, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.6862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6353,7 +6353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -34.802963}
+  m_AnchoredPosition: {x: 0, y: -34.80298}
   m_SizeDelta: {x: 0, y: -69.606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1700873299396451898

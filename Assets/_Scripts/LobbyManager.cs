@@ -125,8 +125,8 @@ public class LobbyManager : MonoBehaviour
         GameManager.Instance.CollectDailyReward();
     }
 
-    public void Logout()
+    public void OpenSettings()
     {
-        GameManager.Instance.SignOut();
+        GameManager.Instance.OpenSettings();
     }
 }

@@ -9,7 +9,7 @@ namespace _Scripts
 
         public LevelProgress(int noOfQuestions)
         {
-            this.NoOfQuestions = noOfQuestions;
+            NoOfQuestions = noOfQuestions;
         }
 
         public bool IsLevelPassed()
@@ -21,7 +21,7 @@ namespace _Scripts
         {
             if (!IsLevelPassed())
             {
-                return NoOfCorrectAnswers / NoOfQuestions * 100;
+                return (int) ((float) NoOfCorrectAnswers / NoOfQuestions * 100);
             }
 
             return 100 - NoOfWrongAnswers * 15;

@@ -74,7 +74,15 @@ public class AIQuizManager : MonoBehaviour
             findingTheStylePanel.SetActive(false);
             endPanel.SetActive(true);
             detectedLearningStyleTxt.text =  "You have been detected as a <br> <br>" + GameManager.Instance.FindLearningStyle() + " learner";
-            PlayerPrefs.DeleteAll();
+            
+            // delete saved values for learning style detection
+            PlayerPrefs.DeleteKey("PV");
+            PlayerPrefs.DeleteKey("PA");
+            PlayerPrefs.DeleteKey("PK");
+                
+            PlayerPrefs.DeleteKey("CV");
+            PlayerPrefs.DeleteKey("CA");
+            PlayerPrefs.DeleteKey("CK");
         }
     }
 
