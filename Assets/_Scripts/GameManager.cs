@@ -19,13 +19,15 @@ namespace _Scripts
         private LevelManager levelManager;
         private FirebaseManager firebaseManager;
         private NotificationManager notificationManager;
-        private bool IsSignedIn { get; set; }
+        public bool IsSignedIn { get; private set; }
         public int CurrentLevel { get; private set; }
         public LevelProgress CurrentLevelProgress { get; private set; }
         public int[] CurrentLevelQuestions { get; private set; }
         public int CurrentQuestionIndex { get; private set; }
 
         [SerializeField] private GameObject screenGuardWarningCanvas;
+        [SerializeField] private GameObject settingsCanvas;
+
 
         protected override async void Awake()
         {
@@ -322,6 +324,11 @@ namespace _Scripts
             {
                 Player.CollectDailyReward(10);
             }
+        }
+
+        public void OpenSettings()
+        {
+            Instantiate(settingsCanvas);
         }
     }
 }

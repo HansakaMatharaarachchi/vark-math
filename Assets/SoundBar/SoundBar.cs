@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class SoundBar : MonoBehaviour
 {
     [SerializeField] Slider VolumeSlider;
-    // Start is called before the first frame update
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))

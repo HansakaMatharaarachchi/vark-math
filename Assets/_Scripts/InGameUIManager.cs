@@ -136,5 +136,10 @@ namespace _Scripts
         {
             GameManager.Instance.LoadScene(1);
         }
+
+        public void OpenSettings()
+        {
+            GameManager.Instance.OpenSettings();
+        }
     }
 }
