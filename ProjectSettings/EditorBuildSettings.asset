@@ -51,13 +51,13 @@ EditorBuildSettings:
     path: Assets/_Scenes/Levels/1/Visual/Level_1_V3.unity
     guid: 23dcc94ed0f82d2b994ccfe118b9cf16
   - enabled: 1
-    path: Assets/_Scenes/Levels/1/Auditory/w-audio-counting.unity
+    path: Assets/_Scenes/Levels/3/Auditory/w-audio-counting.unity
     guid: 43a51ad866e5ba64da01df7dc4ebb00e
   - enabled: 1
-    path: Assets/_Scenes/Levels/1/Auditory/w-audio-counting3.unity
+    path: Assets/_Scenes/Levels/3/Auditory/w-audio-counting3.unity
     guid: 8cb5fcbf001d2ec4f83255ec55a572a6
   - enabled: 1
-    path: Assets/_Scenes/Levels/1/Auditory/w-couniting-audio-2.unity
+    path: Assets/_Scenes/Levels/3/Auditory/w-couniting-audio-2.unity
     guid: cf527b6f450bc0f4eaa812e5a85d3507
   - enabled: 1
     path: Assets/_Scenes/Levels/1/Kinesthetic/count2 Kin.unity
@@ -86,6 +86,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Fabian/Scenes/Level-3/SubtractionVisual3.unity
     guid: 48d164f893fb6d040bf5395497f7c395
+  - enabled: 1
+    path: Assets/Fabian/Scenes/auditory/Level-2/1Addition_auditory.unity
+    guid: d24580b68ac230e4c9bce0beec5e44ef
+  - enabled: 1
+    path: Assets/Fabian/Scenes/auditory/Level-2/2Addition_auditory.unity
+    guid: 5b5a12a86583bf04285914e2bbe29ba4
+  - enabled: 1
+    path: Assets/Fabian/Scenes/auditory/Level-2/3Addition_auditory.unity
+    guid: 118892e17293a244baad4d48f08390de
+  - enabled: 1
+    path: Assets/Fabian/Scenes/auditory/Level-3/1subAuditory.unity
+    guid: 9e57786219867a64cbb9d4d075b774fb
+  - enabled: 1
+    path: Assets/Fabian/Scenes/auditory/Level-3/2subAuditory.unity
+    guid: bb8e9fd96a910c04e96a2aed80c0f28f
+  - enabled: 1
+    path: Assets/Fabian/Scenes/auditory/Level-3/3subAuditory.unity
+    guid: 735e3ef234dc5c043b959afcfeee7efc
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f0356e91825cde408ce0c67276aec5e,
       type: 2}

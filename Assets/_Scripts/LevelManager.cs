@@ -11,19 +11,19 @@ namespace _Scripts
             levels.Add(1, new Dictionary<LearningStyle, int[]>
             {
                 {LearningStyle.Visual, new[] {12, 13, 14}},
-                {LearningStyle.Auditory, new[] {15, 16, 17}},
+                {LearningStyle.Auditory, new[] {27, 28, 29}},
                 {LearningStyle.Kinesthetic, new[] {18, 19, 20}},
             });
             levels.Add(2, new Dictionary<LearningStyle, int[]>
             {
                 {LearningStyle.Visual, new[] {21, 22, 23}},
-                {LearningStyle.Auditory, new[] {7, 8, 9}},
+                {LearningStyle.Auditory, new[] {30, 31, 32}},
                 {LearningStyle.Kinesthetic, new[] {7, 8, 9}},
             });
             levels.Add(3, new Dictionary<LearningStyle, int[]>
             {
-                {LearningStyle.Visual, new[] {10, 11, 12}},
-                {LearningStyle.Auditory, new[] {7, 8, 9}},
+                {LearningStyle.Visual, new[] {21, 22, 23}},
+                {LearningStyle.Auditory, new[] {15, 16, 17}},
                 {LearningStyle.Kinesthetic, new[] {7, 8, 9}},
             });
         }
