@@ -38,13 +38,13 @@ namespace _Scripts
         {
             if (GameManager.Instance.Player.LevelStats[level - 1].NoOfAttempts > 0)
             {
-                //todo change according to the level title
+                //todo change according to the level title and assign relevant index values in build settings
                 levelInfo.text = level switch
                 {
                     1 => "Level " + level + " Counting",
-                    2 => "Level " + level + " Counting",
-                    3 => "Level " + level + " Counting",
-                    4 => "Level " + level + " Counting",
+                    2 => "Level " + level + " Addition",
+                    3 => "Level " + level + " Subtraction",
+                    4 => "Level " + level + " Comparision",
                     5 => "Level " + level + " Counting",
                     _ => levelInfo.text
                 };
