@@ -12,7 +12,7 @@ public class AnswerScript : MonoBehaviour
     public void Answer()
     {
         if (isCorrect)
-        {
+        {   
             Debug.Log("Correct Anwer");
             quizManager.currect();
         }
