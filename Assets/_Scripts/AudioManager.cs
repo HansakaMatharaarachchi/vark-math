@@ -6,13 +6,13 @@ namespace _Scripts
     {
         public AudioManager()
         {
-            if (!PlayerPrefs.HasKey("musicVolume"))
+            if (PlayerPrefs.HasKey("musicVolume"))
             {
-                PlayerPrefs.SetFloat("musicVolume", 0.80f);
                 Load();
             }
             else
             {
+                PlayerPrefs.SetFloat("musicVolume", 0.80f);
                 Load();
             }
         }

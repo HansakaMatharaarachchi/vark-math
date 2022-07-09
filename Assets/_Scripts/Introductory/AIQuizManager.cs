@@ -18,6 +18,8 @@ public class AIQuizManager : MonoBehaviour
     [SerializeField] private List<AIQuestion> parentsQuestionnaire = new List<AIQuestion>();
     [SerializeField] private GameObject envContainer;
     [SerializeField] private GameObject questionPanel;
+    [SerializeField] private GameObject skipPanel;
+
     [SerializeField] private GameObject endPanel;
     [SerializeField] private GameObject findingTheStylePanel;
 
@@ -39,12 +41,15 @@ public class AIQuizManager : MonoBehaviour
     private async void PlayAuditoryQuestion()
     {
         envContainer.SetActive(true);
+        skipPanel.SetActive(true);
         while (audioSource.isPlaying)
         {
             await Task.Delay(1000);
         }
 
         envContainer.SetActive(false);
+        skipPanel.SetActive(false);
+
         questionPanel.SetActive(true);
         DisplayQuestion();
         foreach (Button button in choices)
@@ -100,5 +105,9 @@ public class AIQuizManager : MonoBehaviour
     public void GoToLobby()
     {
         GameManager.Instance.InitGame();
+    }
+
+    public void SkipIntro() {
+        envContainer.SetActive(false);
     }
 }
